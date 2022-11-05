@@ -78,9 +78,9 @@ def cvt_tone(tone, fin):
         return ''
     if tone in [1, 4]:  # flat
         return ''
-    if tone in [2, 5]:  # up
+    if tone in [2, 5]:  # raising
         return 'q'
-    assert tone in [3, 6], tone  # down
+    assert tone in [3, 6], tone  # falling
     return 's'
 
 
