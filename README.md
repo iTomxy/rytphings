@@ -94,6 +94,15 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
     jyut6ping3.maps.dict.yaml
 ```
 
+# 已知问题 / Known Issues
+
+在自己 Windows 11 上面用 Rime 0.9.30 试用，
+打不出中文逗、句号。
+用 jyut6ping3<sup>[2]</sup> 的时候也是，
+但用 jyutping<sup>[1]</sup> 时却正常。
+暂不知是什么原因。
+（*rytphings.schema.yaml* 也是基于 [2] 的 *jyut6ping3.scheme.yaml* 改的）
+
 # 参考 / References
 
 1. [rime/rime-jyutping](https://github.com/rime/rime-jyutping)
