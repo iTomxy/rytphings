@@ -1,0 +1,11 @@
+# rytphings.dict.yaml
+# encoding: utf-8
+
+---
+name: rytphings
+version: "2022.10.28"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - rytphings.chars
+...
