@@ -84,14 +84,14 @@ def cvt_tone(tone, fin):
     return 's'
 
 
-def jyut6ping3_to_rytphings(j6p3_code):
-    match_obj = re.match(r"([a-z]+)([1-6])", j6p3_code)
-    assert match_obj is not None, j6p3_code
+def jyut6ping3_to_rytphings(j6p3_spell):
+    match_obj = re.match(r"([a-z]+)([1-6])", j6p3_spell)
+    assert match_obj is not None, j6p3_spell
     init_fin = match_obj.group(1)
     tone = int(match_obj.group(2))
     # print(init_fin, tone)
     init, fin = split_init_fin(init_fin)
-    assert "" != fin, "{}, {}, {}, {}".format(j6p3_code, init, fin, tone)
+    assert "" != fin, "{}, {}, {}, {}".format(j6p3_spell, init, fin, tone)
     init2 = cvt_initial(init, tone)
     fin2 = cvt_final(fin)
     if 'i' == init2 == fin2[0] or 'u' == init2 == fin2[0]:
@@ -124,15 +124,15 @@ for dict_f in args.dict_files:
             line = line.strip()
             if "" == line:
                 continue
-            code = line.split('\t')
-            # print(code)
-            if len(code) > 1:
-                init, fin, tone = jyut6ping3_to_rytphings(code[1])
+            spell = line.split('\t')
+            # print(spell)
+            if len(spell) > 1:
+                init, fin, tone = jyut6ping3_to_rytphings(spell[1])
                 if (init, tone) != _pre:  # sampling
-                    print(code, "->", init + fin + tone)
+                    print(spell, "->", init + fin + tone)
                     _pre = (init, tone)
-                code[1] = init + fin + tone
-            f_rph.write('\t'.join(code) + '\n')
+                spell[1] = init + fin + tone
+            f_rph.write('\t'.join(spell) + '\n')
 
             # if i > 100:
             #     break # debug
