@@ -62,7 +62,7 @@ def cvt_initial(init, tone):
     if tone in NEGATIVE_TONES:
         res = INITIALS_NEG2VL[init] if init in INITIALS_NEG2VL else init
     else:
-        assert tone in POSITIVE_TONES, tone
+        assert tone in POSITIVE_TONES, str(tone)
         res = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
     if init in ASPIRATED_INITIALS:
         res = init + 'h'
@@ -138,3 +138,4 @@ for dict_f in args.dict_files:
             #     break # debug
 
     print("finish:", dict_f, "->", cvt_dict_f)
+
