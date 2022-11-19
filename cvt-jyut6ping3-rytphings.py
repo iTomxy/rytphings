@@ -30,8 +30,8 @@ ASPIRATED_INITIALS = ['p', 't', 'c', 'k', 'kw']  # no `h`
 NEGATIVE_TONES = [1, 2, 3]
 POSITIVE_TONES = [4, 5, 6]
 INITIALS_NEG2VL = { # negative tone -> voiceless initial
-    'm': "mh",
-    'n': "nh", 'l': "lh",
+    'b': 'p', 'm': "mh",
+    'd': 't', 'n': "nh", 'l': "lh",
     'z': 'c',
     'g': 'k', "gw": "kw", "ng": '',
     'j': 'i', 'w': 'u'
@@ -46,7 +46,7 @@ INITIALS_POS2V = { # positive tone -> voiced initial
 
 
 def split_init_fin(init_fin):
-    if len(init_fin) > 1 and init_fin[:2] in INITIALS:  # gw, kw, ng
+    if len(init_fin) > 2 and init_fin[:2] in INITIALS:  # gw, kw, ng
         if "ng" == init_fin:
             return '', init_fin
         return init_fin[:2], init_fin[2:]
@@ -58,25 +58,29 @@ def split_init_fin(init_fin):
 
 
 def cvt_initial(init, tone):
-    res = None
+    init2 = None
     if tone in NEGATIVE_TONES:
-        res = INITIALS_NEG2VL[init] if init in INITIALS_NEG2VL else init
+        init2 = INITIALS_NEG2VL[init] if init in INITIALS_NEG2VL else init
     else:
         assert tone in POSITIVE_TONES, str(tone)
-        res = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
+        init2 = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
     if init in ASPIRATED_INITIALS:
-        res = init + 'h'
-    return res
+        init2 += 'h'
+    return init2
 
 
-def cvt_final(fin):
-    return fin.replace("yu", 'y')
+def cvt_final(fin, tone):
+    fin2 = fin.replace("yu", 'y').replace("eoi", "eoy")
+    # distinguish upper & lower negative chekced tone by ending consonant
+    if 3 == tone and fin[-1] in "ptk":
+        fin2 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin[-1]]
+    return fin2
 
 
 def cvt_tone(tone, fin):
-    if fin[-1] in "ptk":
+    if fin[-1] in "ptkbd" or 'g' == fin[-1] and "ng" != fin[-2:]:  # checked
         return ''
-    if tone in [1, 4]:  # flat
+    if tone in [1, 4]:  # even
         return ''
     if tone in [2, 5]:  # raising
         return 'q'
@@ -93,7 +97,7 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     init, fin = split_init_fin(init_fin)
     assert "" != fin, "{}, {}, {}, {}".format(j6p3_spell, init, fin, tone)
     init2 = cvt_initial(init, tone)
-    fin2 = cvt_final(fin)
+    fin2 = cvt_final(fin, tone)
     if 'i' == init2 == fin2[0] or 'u' == init2 == fin2[0]:
         init2 = ''
     tone2 = cvt_tone(tone, fin)
@@ -139,3 +143,9 @@ for dict_f in args.dict_files:
 
     print("finish:", dict_f, "->", cvt_dict_f)
 
+"""
+['㵇', 'tim4'] -> thim
+['㶘', 'tim5'] -> thimq
+['掭', 'tim6', '5%'] -> thims
+['㥏', 'tin5', '5%'] -> thinq
+"""
