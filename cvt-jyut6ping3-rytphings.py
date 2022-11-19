@@ -142,10 +142,3 @@ for dict_f in args.dict_files:
             #     break # debug
 
     print("finish:", dict_f, "->", cvt_dict_f)
-
-"""
-['㵇', 'tim4'] -> thim
-['㶘', 'tim5'] -> thimq
-['掭', 'tim6', '5%'] -> thims
-['㥏', 'tin5', '5%'] -> thinq
-"""
