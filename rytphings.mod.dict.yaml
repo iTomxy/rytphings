@@ -1,0 +1,11 @@
+# rytphings.mod.dict.yaml
+# 變調
+
+---
+name: rytphings.mod
+version: "2022.11.27"
+sort: by_weight
+...
+
+件	kinq
+唔	m

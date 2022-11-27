@@ -107,6 +107,8 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 但用 jyutping<sup>[1]</sup> 时却正常。
 暂不知是什么原因。
 （*rytphings.schema.yaml* 也是基于 [2] 的 *jyut6ping3.scheme.yaml* 改的）
+不过在 Windows 10 上可以正常使用，
+而在自己的 Windows 11 笔记本上也可以基于 *rime-jyutping/jyutping.scheme.yaml* 改一个 scheme 文件用。
 
 ## 变调
 

@@ -4,7 +4,7 @@
 schema:
   schema_id: rytphings
   name: rytphings
-  version: "2022.10.28"
+  version: "2022.11.27"
   author:
     - iTom <hackeritom@163.com>
 
@@ -101,7 +101,7 @@ speller:
     # - derive/eo/oe/               # 容錯 eo/oe 不分
     # - derive/oe/eo/               # 容錯 eo/oe 不分
     # - derive/aa(?=\d)/a/          # 容錯
-    - derive/^([a-z]+)[qs]$/$1/              # 忽略聲調
+    # - derive/^([a-z]+)[qs]$/$1/   # 忽略聲調
 
     - abbrev/^([a-z]).+$/$1/      # 首字母簡拼
 
