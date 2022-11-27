@@ -43,6 +43,10 @@ INITIALS_POS2V = { # positive tone -> voiced initial
     'k': 'g', "kw": "gw", '': "ng",
     'h': 'x', 'j': 'r'
 }
+# skip corner cases & deal with them later in `rytphings.mod.dict.yaml`
+SKIP = set(
+    r"哦"
+)
 
 
 def split_init_fin(init_fin):
@@ -130,6 +134,9 @@ for dict_f in args.dict_files:
                 continue
             spell = line.split('\t')
             # print(spell)
+            if spell[0] in SKIP:
+                print("skip:", spell)
+                continue
             if len(spell) > 1:
                 init, fin, tone = jyut6ping3_to_rytphings(spell[1])
                 if (init, tone) != _pre:  # sampling
