@@ -61,13 +61,16 @@ def split_init_fin(init_fin):
     return '', init_fin
 
 
-def cvt_initial(init, tone):
+def cvt_initial(init, fin, tone):
     init2 = None
     if tone in NEGATIVE_TONES:
         init2 = INITIALS_NEG2VL[init] if init in INITIALS_NEG2VL else init
     else:
         assert tone in POSITIVE_TONES, str(tone)
-        init2 = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
+        if '' == init and fin in ["ng", 'm']:  # avoid "ngng", "ngm"
+            init2 = init
+        else:
+            init2 = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
     if init in ASPIRATED_INITIALS:
         init2 += 'h'
     return init2
@@ -100,7 +103,7 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     # print(init_fin, tone)
     init, fin = split_init_fin(init_fin)
     assert "" != fin, "{}, {}, {}, {}".format(j6p3_spell, init, fin, tone)
-    init2 = cvt_initial(init, tone)
+    init2 = cvt_initial(init, fin, tone)
     fin2 = cvt_final(fin, tone)
     if 'i' == init2 == fin2[0] or 'u' == init2 == fin2[0]:
         init2 = ''
