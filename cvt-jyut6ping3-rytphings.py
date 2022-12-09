@@ -50,7 +50,7 @@ SKIP = set(
 
 
 def split_init_fin(init_fin):
-    if len(init_fin) > 2 and init_fin[:2] in INITIALS:  # gw, kw, ng
+    if len(init_fin) >= 2 and init_fin[:2] in INITIALS:  # gw, kw, ng
         if "ng" == init_fin:
             return '', init_fin
         return init_fin[:2], init_fin[2:]
