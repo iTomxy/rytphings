@@ -112,6 +112,10 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 ## 变调
 
+(2023.3.29) 现支持复韵尾表示入声的升调变调，如：
+- 𠻘: zoet2 -> coet**q**
+- 雀: zoek2 -> coek**q**
+
 一些口语变调可能处理不太恰当，如：
 ```
 ['𠻘', 'zoet2', '5%'] -> coet  # 入声，但变调的调值同阴上

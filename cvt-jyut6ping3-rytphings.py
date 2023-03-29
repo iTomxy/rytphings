@@ -86,7 +86,10 @@ def cvt_final(fin, tone):
 
 def cvt_tone(tone, fin):
     if fin[-1] in "ptkbd" or 'g' == fin[-1] and "ng" != fin[-2:]:  # checked
-        return ''
+        if tone in [2, 5]:  # support modified raising tone
+            return 'q'
+        else:
+            return ''
     if tone in [1, 4]:  # even
         return ''
     if tone in [2, 5]:  # raising
@@ -130,7 +133,7 @@ for dict_f in args.dict_files:
             if "..." == line:
                 break
 
-        _pre = (-1, -1)  # sampling
+        _pre = (-1, -1, -1)  # sampling
         for i, line in enumerate(iter_line):
             line = line.strip()
             if "" == line:
@@ -142,9 +145,9 @@ for dict_f in args.dict_files:
                 continue
             if len(spell) > 1:
                 init, fin, tone = jyut6ping3_to_rytphings(spell[1])
-                if (init, tone) != _pre:  # sampling
+                if (init, fin, tone) != _pre:  # sampling
                     print(spell, "->", init + fin + tone)
-                    _pre = (init, tone)
+                    _pre = (init, fin, tone)
                 spell[1] = init + fin + tone
             f_rph.write('\t'.join(spell) + '\n')
 
