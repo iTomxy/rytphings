@@ -44,9 +44,9 @@ INITIALS_POS2V = { # positive tone -> voiced initial
     'h': 'x', 'j': 'r'
 }
 # skip corner cases & deal with them later in `rytphings.mod.dict.yaml`
-SKIP = set(
-    r"哦"
-)
+SKIP = set([
+    r"哦", r"呀"
+])
 
 
 def split_init_fin(init_fin):
