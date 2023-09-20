@@ -111,7 +111,14 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     if 'i' == init2 == fin2[0] or 'u' == init2 == fin2[0]:
         init2 = ''
     tone2 = cvt_tone(tone, fin)
-    return init2, fin2, tone2
+
+    ret = [(init2, fin2, tone2)]
+    if 6 == tone and fin2[-1] in "ptk": # positive checked tone
+        # e.g. 別 bit = bid != 必 pit != 憋 pid
+        fin3 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin2[-1]]
+        ret.append([init2, fin3, tone2])
+
+    return ret
 
 
 for dict_f in args.dict_files:
@@ -143,13 +150,15 @@ for dict_f in args.dict_files:
             if spell[0] in SKIP:
                 print("skip:", spell)
                 continue
-            if len(spell) > 1:
-                init, fin, tone = jyut6ping3_to_rytphings(spell[1])
-                if (init, fin, tone) != _pre:  # sampling
-                    print(spell, "->", init + fin + tone)
-                    _pre = (init, fin, tone)
-                spell[1] = init + fin + tone
-            f_rph.write('\t'.join(spell) + '\n')
+            if len(spell) > 1: # defined spelling
+                for init, fin, tone in jyut6ping3_to_rytphings(spell[1]):
+                    if (init, fin, tone) != _pre:  # sampling
+                        print(spell, "->", init + fin + tone)
+                        _pre = (init, fin, tone)
+                    spell[1] = init + fin + tone
+                    f_rph.write('\t'.join(spell) + '\n')
+            else: # only phrase, no specified spelling
+                f_rph.write('\t'.join(spell) + '\n')
 
             # if i > 100:
             #     break # debug

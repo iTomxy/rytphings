@@ -91,7 +91,7 @@ speller:
     # 取消下行註釋，支援獨立鼻音韻 ng 併入 m，如「吳」讀若「唔」
     #- derive/^ng([123456])$/m$1/
 
-    # - derive/^([aeiou])/q$1/      # 增加 q 表示喉塞
+    - derive/^([aeiou])/q$1/        # 增加 q 表示喉塞
     # - derive/^jy?([aeiou])/y$1/   # 容錯 je -> ye, jyu -> yu
     # - derive/^jyu/ju/             # 容錯 jyu -> ju
     # - derive/yu/y/                # 容錯 jyu -> jy
