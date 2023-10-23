@@ -1,0 +1,11 @@
+# rytphings.phrase.dict.yaml
+# 變調、特殊處理
+
+---
+name: rytphings.phrase
+version: "2023.10.23"
+sort: by_weight
+...
+
+澹定
+鏈接

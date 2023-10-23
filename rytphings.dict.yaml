@@ -9,4 +9,5 @@ use_preset_vocabulary: true
 import_tables:
   - rytphings.chars
   - rytphings.mod
+  - rytphings.phrase
 ...
