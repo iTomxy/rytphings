@@ -11,4 +11,5 @@ import_tables:
   - rytphings.mod
   - rytphings.phrase
   - rytphings.greek
+  - rytphings.kana
 ...

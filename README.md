@@ -151,3 +151,4 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 10. [为什么粤语的入声音调有三种，阴入要分成两种？](https://www.zhihu.com/question/36615633)
 11. [粵語聲調](https://zh.m.wikipedia.org/zh/%E7%B2%B5%E8%AA%9E%E8%81%B2%E8%AA%BF)
 12. [windows禁用输入法](https://blog.csdn.net/HackerTom/article/details/131114830)
+13. [rime-japanese](https://github.com/gkovacs/rime-japanese)
