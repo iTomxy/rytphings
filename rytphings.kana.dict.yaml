@@ -11,31 +11,31 @@ sort: by_weight
 # Mostly based on the Hepburn romanization system
 
 # Small forms
-ぁ	_a
-ぃ	_i
-ぅ	_u
-ぇ	_e
-ぉ	_o
-ゃ	_ya
-ゅ	_yu
-ょ	_yo
-ゎ	_wa
-ゕ	_ka
-ゖ	_ke
-っ	_tsu
+ぁ	a
+ぃ	i
+ぅ	u
+ぇ	e
+ぉ	o
+ゃ	ya
+ゅ	yu
+ょ	yo
+ゎ	wa
+ゕ	ka
+ゖ	ke
+っ	tsu
 
-ァ	_a
-ィ	_i
-ゥ	_u
-ェ	_e
-ォ	_o
-ャ	_ya
-ュ	_yu
-ョ	_yo
-ヮ	_wa
-ヵ	_ka
-ヶ	_ke
-ッ	_tsu
+ァ	a
+ィ	i
+ゥ	u
+ェ	e
+ォ	o
+ャ	ya
+ュ	yu
+ョ	yo
+ヮ	wa
+ヵ	ka
+ヶ	ke
+ッ	tsu
 
 # Gojuuon 五十音
 あ	a
