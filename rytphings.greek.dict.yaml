@@ -60,3 +60,6 @@ sort: by_weight
 ψ	psi
 Ω	omega
 ω	omega
+
+# math nabla (inverted delta)
+∇	nabla
