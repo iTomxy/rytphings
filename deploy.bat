@@ -1,7 +1,7 @@
 @echo off
 
 set RIME=%APPDATA%\Rime
-set RIME_BIN=D:\Rime
+set RIME_BASE=D:\Rime
 for /d %%d in ("%RIME_BASE%\*") do set RIME_BIN=%%d
 
 copy rytphings.*.yaml %RIME%
