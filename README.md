@@ -6,7 +6,7 @@
 
 # 方案简述 / The Scheme
 
-改编动机是将声调「还原」回由声母、韵尾屈折变化表达的形式：
+改编动机是将声调「还原」回由声母清浊、后缀派生表达的形式：
 中古四声的来源是上古韵尾<sup>[5]</sup>，
 阴阳调的来源是声母清浊。
 所以总体的设计是：
@@ -32,8 +32,8 @@
 但我母在阴调时统一实现为零声母（清喉塞音[ʔ]），
 所以不用 ngh。
 
-- 舌音不分精照，
-为了缩短符号，
+- 为了缩短符号，
+舌音不分精照，
 参考 [8]，
 精、清二母阴调时写作 c、ch，
 阳调时写作 j、jh。
@@ -95,27 +95,6 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
     jyut6ping3.phrase.dict.yaml \
     jyut6ping3.lettered.dict.yaml \
     jyut6ping3.maps.dict.yaml
-```
-
-# 已知问题 / Known Issues
-
-## Windows 11
-
-在自己 Windows 11 上面用 Rime 0.9.30 试用，
-打不出中文逗、句号。
-用 jyut6ping3<sup>[2]</sup> 的时候也是，
-但用 jyutping<sup>[1]</sup> 时却正常。
-暂不知是什么原因。
-（*rytphings.schema.yaml* 也是基于 [2] 的 *jyut6ping3.scheme.yaml* 改的）
-不过在 Windows 10 上可以正常使用，
-而在自己的 Windows 11 笔记本上也可以基于 *rime-jyutping/jyutping.scheme.yaml* 改一个 scheme 文件用。
-
-## 变调
-
-一些口语变调可能处理不太恰当，如：
-```
-['𠻘', 'zoet2', '5%'] -> coet  # 入声，但变调的调值同阴上
-['𠻘', 'zoet6', '5%'] -> joet  # 本调
 ```
 
 # 更新 / Updates
