@@ -29,7 +29,7 @@
 - 明、泥、来、我四母也有阴调的辖字，
 参考 [8]，
 复用 `h` 作为“清化”的记号（只标记阴调，并非真的清化）。
-但我母在阴调时统一实现为零声母（清喉塞音[ʔ]），
+但我母在阴调时统一实现为零声母（亞母，清喉塞音[ʔ]），
 所以不用 ngh。
 
 - 为了缩短符号，
@@ -58,6 +58,42 @@
 在针对阴阳调屈折时，
 只改 k/g，
 不动 w。
+
+## 声母 / Initials
+
+| | | | |
+| - | - | - | - |
+| 幫 p / 並 b | 滂 ph / 旁 bh | 非 f / 肥 v | 媽 mh / 明 m |
+| 端 t / 段 d | 透 th / 頭 dh | 拉 lh / 來 l | 乸 nh / 泥 n |
+| 精照 c / 靜趙 j | 清穿 ch / 晴傳 jh | 心審 s / 愁岑 z |
+| 見 k / 健 g | 溪 kh / 奇 gh | 曉 h / 厚 x | 亞 (q) / 我 ng |
+| 古 kw / 櫃 gw | 困 kwh / 羣 gwh |
+| 衣 i / 以日 r | 溫 u / 云 w |
+
+## 韵母 / Finals
+
+| | -ø | -i | -y | -u | -m | -n | -ng | -p/-b | -t/-d | -k/-g |
+| - | - | - | - | - | - | - | - | - | - | - |
+| aa | 啊 | 隘 | | 拗 | 監 | 慳 | 坑 | 匣/鴨 | 捺/壓 | 白/百 |
+| a | | 矮 | | 嘔 | 庵 | 分 | 亨 | 恰/ | 乞/ | 黑/ |
+| i | 衣 | | | 邀 | 淹 | 煙 | 英 | 鎳/妾 | 必/憋 | 益/ |
+| y | 于 | | | | | 淵 | | | 粵/雪 |
+| e | 些 | 希 | | *掉 | *舐 | | 病 | *夾 | | 石/尺 |
+| eo | | | 虛 | | | 臻 | | | 卒 |
+| oe | 靴 | | | | | | 香 | | * | 藥/葯 |
+| o | 哦 | 哀 | | 奧 | | 安 | 康 | | 褐/喝 | 學/惡 |
+| u | 污 | 煨 | | | | 碗 | 空 | | 活/潑 | 屋/捉 |
+| m | 唔 |
+| ng | 吳 |
+
+
+## 声调 / Tones
+
+| | 平 | 上 | 去 | 入 |
+| - | - | - | - | - |
+| 陰 | 巴 paa | 把 paaq | 霸 paas | 不 pat / 八 paad |
+| 陽 | 麻 maa | 馬 maaq | 罵 maas | 襪 mat |
+
 
 # 生成码表 / Dictionary Generation
 
@@ -99,6 +135,11 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.10.10
+
+1. 阳入 -b/-d/-g 混同 -p/-t/-k 改由 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra 之 derive 命令实现，
+[cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 不再生成对应冗余拼写。
+
 ## 2023.9.20
 
 1. 零声母支持显式加 `q`，
@@ -109,6 +150,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 2. 支持阳入用 -b/-d/-g 混同 -p/-t/-k，
 因为并无对立，
 解除同声母的耦合。
+由 [cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 生成对应冗余拼写。
 
 ## 2023.3.29
 
