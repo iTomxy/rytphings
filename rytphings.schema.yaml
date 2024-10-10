@@ -103,7 +103,17 @@ speller:
     # - derive/aa(?=\d)/a/          # 容錯
     # - derive/^([a-z]+)[qs]$/$1/   # 忽略聲調
 
-    - abbrev/^([a-z]).+$/$1/      # 首字母簡拼
+    # 陽入韻尾不分 -p/t/k 與 -b/d/g
+    ## 塞(擦)音, 近音, ng (因爲無 ngh)
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)p$/$1$2b/
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)t$/$1$2d/
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)k$/$1$2g/
+    ## 鼻音, 流音: m, n, l 但非 mh, nh, lh
+    - derive/^([mnl])(?!h)(.+)p$/$1$2b/
+    - derive/^([mnl])(?!h)(.+)t$/$1$2d/
+    - derive/^([mnl])(?!h)(.+)k$/$1$2g/
+
+    - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
     # - xform/1/v/                  # 陰平
     # - xform/4/vv/                 # 陽平
@@ -199,4 +209,3 @@ recognizer:
     # loengfan: "^r[a-z']*;?$"
     # stroke: "^x[hspnz]*;?$"
     # cangjie5: "^v[a-z]*;?$"
-

@@ -113,10 +113,10 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     tone2 = cvt_tone(tone, fin)
 
     ret = [(init2, fin2, tone2)]
-    if 6 == tone and fin2[-1] in "ptk": # positive checked tone
-        # e.g. 別 bit = bid != 必 pit != 憋 pid
-        fin3 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin2[-1]]
-        ret.append([init2, fin3, tone2])
+    # if 6 == tone and fin2[-1] in "ptk": # positive checked tone
+    #     # e.g. 別 bit = bid != 必 pit != 憋 pid
+    #     fin3 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin2[-1]]
+    #     ret.append([init2, fin3, tone2])
 
     return ret
 
