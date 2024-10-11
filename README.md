@@ -61,12 +61,12 @@
 
 | | | | |
 | - | - | - | - |
-| 幫 p / 並 b | 滂 ph / 旁 bh | 非 f / 肥 v | 媽 mh / 明 m |
-| 端 t / 段 d | 透 th / 頭 dh | 拉 lh / 來 l | 乸 nh / 泥 n |
-| 精照 c / 靜趙 j | 清穿 ch / 晴傳 jh | 心審 s / 愁岑 z |
-| 見 k / 健 g | 溪 kh / 奇 gh | 曉 h / 厚 x | 亞 (q) / 我 ng |
-| 古 kw / 櫃 gw | 困 kwh / 羣 gwh |
-| 衣 i / 以日 r | 溫 u / 云 w |
+| 兵 p / 並 b | 滂 ph / 旁 bh | 非 f / 肥 v | 媽 mh / 麻 m |
+| 煅 t / 段 d | 偷 th / 頭 dh | 拉 lh / 來 l | 乸 nh / 那 n |
+| 精照 c / 靜趙 j | 清穿 ch / 晴傳 jh | 修深 s / 愁岑 z |
+| 見 k / 健 g | 崎 kh / 奇 gh | 口 h / 厚 x | 愛 (q) / 外 ng |
+| 貴 kw / 櫃 gw | 昆 kwh / 羣 gwh |
+| 衣 i / 移 r | 溫 u / 云 w |
 
 ## 韵母 / Finals
 
