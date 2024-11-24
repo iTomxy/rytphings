@@ -113,6 +113,10 @@ speller:
     - derive/^([mnl])(?!h)(.+)t$/$1$2d/
     - derive/^([mnl])(?!h)(.+)k$/$1$2g/
 
+    # 支援 oi/ui -> oy/uy
+    - derive/oi(.?)$/oy$1/ # oi -> oy
+    - derive/ui(.?)$/uy$1/ # ui -> uy
+
     - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
     # - xform/1/v/                  # 陰平

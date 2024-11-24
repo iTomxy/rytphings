@@ -133,6 +133,10 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.11.24
+
+支持 oi/ui 表示成 oy/uy（即以圆唇结尾）。
+
 ## 2024.10.10
 
 阳入 -b/-d/-g 混同 -p/-t/-k 改由 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra 之 derive 命令实现，
