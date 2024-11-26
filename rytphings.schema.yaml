@@ -118,7 +118,7 @@ speller:
     - derive/ui(q|s|$)/uy$1/ # ui -> uy
 
     # 支援無韻尾之 aa 寫作 a，如 「巴 paa > pa」、「把 paaq > paq」
-    - derive/aa(q|s|$)/a$1/ # oi -> oy
+    - derive/aa(q|s|$)/a$1/
 
     - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
