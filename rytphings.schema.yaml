@@ -114,8 +114,11 @@ speller:
     - derive/^([mnl])(?!h)(.+)k$/$1$2g/
 
     # 支援 oi/ui -> oy/uy
-    - derive/oi(.?)$/oy$1/ # oi -> oy
-    - derive/ui(.?)$/uy$1/ # ui -> uy
+    - derive/oi(q|s|$)/oy$1/ # oi -> oy
+    - derive/ui(q|s|$)/uy$1/ # ui -> uy
+
+    # 支援無韻尾之 aa 寫作 a，如 「巴 paa > pa」、「把 paaq > paq」
+    - derive/aa(q|s|$)/a$1/ # oi -> oy
 
     - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
