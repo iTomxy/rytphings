@@ -137,10 +137,11 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 按《[A Chinese dictionary in the Cantonese dialect](https://www.google.com.hk/books/edition/A_Chinese_dictionary_in_the_Cantonese_di/mh8TAAAAYAAJ)》改 [cvt-jyut6ping3-rytphings.py](cvt-jyut6ping3-rytphings.py) 中四声英译：
 
-- 平 even
-- 上 ascending
+- 平 even tone / monotone
+- 上 ascending / rising
 - 去 departing
-- 入 abrupt
+- 入 abrupt / entering
+- 仄 deflected
 
 ## 2024.11.26
 
@@ -195,3 +196,4 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 13. [rime-japanese](https://github.com/gkovacs/rime-japanese)
 14. [Rime Old Cantonese Input Scheme | 《分韻撮要》音系及輸入方案](https://github.com/leimaau/old-Cantonese)
 15. [粵音資料集叢](https://github.com/jyutnet/cantonese-books-data)
+16. [LEOYoon-Tsaw/Rime_collections](https://github.com/LEOYoon-Tsaw/Rime_collections)（其中[清代粵語](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Old_cantonese.markdown)有分韵时期粤语同当代粤语之间声、韵、调对应图）
