@@ -133,6 +133,15 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.11.26
+
+支持单独出现的（即无韵尾的） aa 写作 a，
+如：
+
+- 巴 paa > pa
+- 把 paaq > paq
+- 霸 paas > pas
+
 ## 2024.11.24
 
 支持 oi/ui 表示成 oy/uy（即以圆唇结尾）。
@@ -175,3 +184,4 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 11. [粵語聲調](https://zh.m.wikipedia.org/zh/%E7%B2%B5%E8%AA%9E%E8%81%B2%E8%AA%BF)
 12. [windows禁用输入法](https://blog.csdn.net/HackerTom/article/details/131114830)
 13. [rime-japanese](https://github.com/gkovacs/rime-japanese)
+14. [leimaau/old-Cantonese](https://github.com/leimaau/old-Cantonese)
