@@ -78,23 +78,23 @@ def cvt_initial(init, fin, tone):
 
 def cvt_final(fin, tone):
     fin2 = fin.replace("yu", 'y').replace("eoi", "eoy")
-    # distinguish upper & lower negative chekced tone by ending consonant
+    # distinguish upper & lower negative abrupt tone by ending consonant
     if 3 == tone and fin[-1] in "ptk":
         fin2 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin[-1]]
     return fin2
 
 
 def cvt_tone(tone, fin):
-    if fin[-1] in "ptkbd" or 'g' == fin[-1] and "ng" != fin[-2:]:  # checked
-        if tone in [2, 5]:  # support modified raising tone
+    if fin[-1] in "ptkbd" or 'g' == fin[-1] and "ng" != fin[-2:]:  # abrupt
+        if tone in [2, 5]:  # support modified ascending tone
             return 'q'
         else:
             return ''
     if tone in [1, 4]:  # even
         return ''
-    if tone in [2, 5]:  # raising
+    if tone in [2, 5]:  # ascending
         return 'q'
-    assert tone in [3, 6], str(tone)  # falling
+    assert tone in [3, 6], str(tone)  # departing
     return 's'
 
 
@@ -113,7 +113,7 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     tone2 = cvt_tone(tone, fin)
 
     ret = [(init2, fin2, tone2)]
-    # if 6 == tone and fin2[-1] in "ptk": # positive checked tone
+    # if 6 == tone and fin2[-1] in "ptk": # positive abrupt tone
     #     # e.g. 別 bit = bid != 必 pit != 憋 pid
     #     fin3 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin2[-1]]
     #     ret.append([init2, fin3, tone2])

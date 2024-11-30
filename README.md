@@ -133,6 +133,15 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.11.30
+
+按《[A Chinese dictionary in the Cantonese dialect](https://www.google.com.hk/books/edition/A_Chinese_dictionary_in_the_Cantonese_di/mh8TAAAAYAAJ)》改 [cvt-jyut6ping3-rytphings.py](cvt-jyut6ping3-rytphings.py) 中四声英译：
+
+- 平 even
+- 上 ascending
+- 去 departing
+- 入 abrupt
+
 ## 2024.11.26
 
 支持单独出现的（即无韵尾的） aa 写作 a，
@@ -184,4 +193,5 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 11. [粵語聲調](https://zh.m.wikipedia.org/zh/%E7%B2%B5%E8%AA%9E%E8%81%B2%E8%AA%BF)
 12. [windows禁用输入法](https://blog.csdn.net/HackerTom/article/details/131114830)
 13. [rime-japanese](https://github.com/gkovacs/rime-japanese)
-14. [leimaau/old-Cantonese](https://github.com/leimaau/old-Cantonese)
+14. [Rime Old Cantonese Input Scheme | 《分韻撮要》音系及輸入方案](https://github.com/leimaau/old-Cantonese)
+15. [粵音資料集叢](https://github.com/jyutnet/cantonese-books-data)
