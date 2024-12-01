@@ -133,6 +133,21 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.12.1
+
+显式亞母 `q-` 只适用于：
+
+- a, e, o 开头
+- uk, ung
+
+而
+
+- i 开头
+- 其余 u 开头
+
+是音调以母、云母，
+不支持前加 `q-`。
+
 ## 2024.11.30
 
 按《[A Chinese dictionary in the Cantonese dialect](https://www.google.com.hk/books/edition/A_Chinese_dictionary_in_the_Cantonese_di/mh8TAAAAYAAJ)》改 [cvt-jyut6ping3-rytphings.py](cvt-jyut6ping3-rytphings.py) 中四声英译：
@@ -165,8 +180,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 1. 零声母支持显式加 `q`，
 如「愛」：ois = qois。
-修改在 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra，
-启用了 `derive/^([aeiou])/q$1/` 一行。
+~~修改在 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra，启用了 `derive/^([aeiou])/q$1/` 一行。~~
 
 2. 支持阳入用 -b/-d/-g 混同 -p/-t/-k，
 因为并无对立，
