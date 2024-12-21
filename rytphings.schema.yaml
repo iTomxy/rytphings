@@ -122,6 +122,9 @@ speller:
     # 支援無韻尾之 aa 寫作 a，如 「巴 paa > pa」、「把 paaq > paq」
     - derive/aa(q|s|$)/a$1/
 
+    # 支援困母合口、送氣標記換位，即 kwh = khw, gwh = ghw
+    - derive/^(k|g)wh/$1hw/
+
     - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
     # - xform/1/v/                  # 陰平

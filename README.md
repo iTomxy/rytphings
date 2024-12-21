@@ -133,6 +133,14 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2024.12.21
+
+支持困母的合口、送气标记换位，
+即：
+
+- kwh = khw
+- gwh = ghw
+
 ## 2024.12.1
 
 显式亞母 `q-` 只适用于：
