@@ -1,0 +1,15 @@
+# ipa_yunlong.custom.yaml
+
+# When using ipa_yunlong scheme (雲龍國際音標, https://github.com/rime/rime-ipa),
+# both the minus (-) and equal (=) symbols are used in its alphabet
+# (see https://github.com/rime/rime-ipa/blob/master/ipa_yunlong.schema.yaml)
+# This conflicts with the default PageUp and PageDown button.
+# (see the "key_binder/bindings" in %APPDATA%\Roaming\Rime\build\default.yaml)
+# So this patch keeps minus and equal as-is to avoid this conflict.
+# You can still use the PageUp and PageDown button on your keyboard to navigate.
+
+patch:
+  key_binder:
+    bindings:
+      - {accept: minus, send: minus, when: has_menu}
+      - {accept: equal, send: equal, when: has_menu}

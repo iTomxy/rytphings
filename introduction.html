@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>粤语入门 Introduction to Cantonese</title>
+<style>
+  body {
+    font-family: Consolas, monospace;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 20px;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+  }
+
+  td, th {
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  h1, h2, h3 {
+    margin-bottom: 10px;
+  }
+
+  p, li {
+    line-height: 1.5;
+  }
+
+  /* Light Theme */
+  .light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .light td, .light th {
+    border-color: #999;
+    color: #000;
+  }
+
+  .light a {
+    color: #cc0066; /* LaTeX-style pink */
+    text-decoration: none;
+  }
+
+  .light a:hover {
+    text-decoration: underline;
+    color: #fb7299; /* Bilibili pink on hover */
+  }
+
+  /* Dark Theme */
+  .dark {
+    background-color: #1e1e1e;
+    /* color: #9cdcfe; Light blue body text */
+    color: #ffffff; /* white body text */
+  }
+
+  .dark td, .dark th {
+    /* border-color: #3c3c3c; */
+    border-color: #7f7f7f;
+    /* color: #b5cea8; Light green table text */
+    color: #fce566; /* Light yellow table text */
+  }
+
+  .dark h1, .dark h2, .dark h3 {
+    /* color: #fce566; Light yellow title */
+    color: #9cdcfe; /* Light blue title */
+  }
+
+  .dark a {
+    color: #b5cea8; /* light green */
+    text-decoration: none;
+  }
+
+  .dark a:hover {
+    text-decoration: underline;
+    color: #c8e6b7; /* slightly brighter green on hover */
+  }
+
+
+  /* Floating Button */
+  #themeToggleBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s;
+  }
+
+  .light #themeToggleBtn {
+    background-color: #ddd;
+    color: #000;
+  }
+
+  #themeToggleBtn:hover {
+    background-color: #666;
+  }
+
+  .light #themeToggleBtn:hover {
+    background-color: #bbb;
+  }
+</style>
+</head>
+<body class="light">
+
+<p>此教程通过拼音简要介绍粤语音系，夹杂与普通话拼音的对照来辅助入门。所用粤语拼音方案为粤拼 [1,2]。</p>
+
+<h1>字音</h1>
+
+<p>汉字的语音结构由三部份组成，即声母、韵母、声调，韵母又可细分为韵头、韵腹、韵尾。图示：</p>
+
+<table>
+  <tr>
+    <td colspan="4">声调</td>
+  </tr>
+  <tr>
+    <td rowspan="2">声母</td>
+    <td colspan="3">韵母</td>
+  </tr>
+  <tr>
+    <td>韵头 / 介音</td>
+    <td>韵腹 / 主元音</td>
+    <td>韵尾</td>
+  </tr>
+</table>
+
+<p>以「光」字普通话拼音 guāng 为例：</p>
+<ul>
+  <li>声母：g</li>
+  <li>韵母：</li>
+  <ul>
+    <li>韵头/介音：u</li>
+    <li>韵腹/主元音：a</li>
+    <li>韵尾：ng</li>
+  </ul>
+  <li>声调： ̄   （阴平、一声）</li>
+</ul>
+
+<p>这些元素中，只有韵腹和声调是必有的，其它元素都可能缺失，如：</p>
+<ul>
+  <li>汪 uāng：即 wāng，无声母</li>
+  <li>刚 gāng：无韵头</li>
+  <li>瓜 guā：无韵尾</li>
+  <li>尬 gà：无韵头、韵尾</li>
+  <li>蛙 uā：无声母、韵尾</li>
+  <li>肮 āng：无声母、韵头</li>
+  <li>啊 ā：无声母、韵头、韵尾</li>
+</ul>
+
+<h1>声母</h1>
+
+<h1>韵母</h1>
+
+<h1>声调</h1>
+
+<h1>参考</h1>
+
+<ol>
+  <li><a href="https://jyutping.org/jyutping/" target=_blank>粵拼：香港語言學學會粵語拼音方案</a></li>
+  <li><a href="https://github.com/rime/rime-cantonese" target=_blank>Rime Cantonese input schema | 粵語拼音輸入方案</a></li>
+</ol>
+
+<button id="themeToggleBtn" onclick="toggleTheme()">暗 Dark</button>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('themeToggleBtn');
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
+
+    if (body.classList.contains('dark')) {
+      btn.textContent = '亮 Light';
+    } else {
+      btn.textContent = '暗 Dark';
+    }
+  }
+</script>
+
+</body>
+</html>
