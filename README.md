@@ -2,6 +2,7 @@
 
 基于粤拼 <sup>[1,2]</sup> 的自改粤语拼音方案。
 自制 Rime 输入方案、启用可以参考 [3,4]。
+简单粤语入门见 [introduction.html](introduction.html)（浏览器打开）。
 
 # 方案简述 / The Scheme
 

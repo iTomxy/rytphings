@@ -11,11 +11,29 @@
     padding: 20px;
   }
 
+  p, li {
+    line-height: 1.5;
+  }
+
+  /* light & dark theme */
+  .light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .dark {
+    background-color: #1e1e1e;
+    /* color: #9cdcfe; Light blue body text */
+    color: #ffffff; /* white body text */
+  }
+
+  /* table */
   table {
     border-collapse: collapse;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 80%;
+    table-layout: auto;
+    width: auto;
   }
 
   td, th {
@@ -24,42 +42,12 @@
     text-align: center;
     vertical-align: middle;
     transition: color 0.3s, border-color 0.3s;
-  }
-
-  h1, h2, h3 {
-    margin-bottom: 10px;
-  }
-
-  p, li {
-    line-height: 1.5;
-  }
-
-  /* Light Theme */
-  .light {
-    background-color: #ffffff;
-    color: #000000;
+    white-space: nowrap;
   }
 
   .light td, .light th {
     border-color: #999;
     color: #000;
-  }
-
-  .light a {
-    color: #cc0066; /* LaTeX-style pink */
-    text-decoration: none;
-  }
-
-  .light a:hover {
-    text-decoration: underline;
-    color: #fb7299; /* Bilibili pink on hover */
-  }
-
-  /* Dark Theme */
-  .dark {
-    background-color: #1e1e1e;
-    /* color: #9cdcfe; Light blue body text */
-    color: #ffffff; /* white body text */
   }
 
   .dark td, .dark th {
@@ -69,9 +57,36 @@
     color: #fce566; /* Light yellow table text */
   }
 
-  .dark h1, .dark h2, .dark h3 {
+  /* title */
+  h1, h2, h3 {
+    margin-bottom: 10px;
+  }
+
+  .light h1::after {
+    content: "";
+    display: block;
+    margin-top: 0.4em;
+    border-bottom: 1px solid #c4c8cc; /* GitHub-like light gray */
+  }
+
+  .dark h1 {
     /* color: #fce566; Light yellow title */
     color: #9cdcfe; /* Light blue title */
+  }
+
+  .dark h2 {
+    font-weight: bold;
+  }
+
+  /* link */
+  .light a {
+    color: #cc0066; /* LaTeX-style pink */
+    text-decoration: none;
+  }
+
+  .light a:hover {
+    text-decoration: underline;
+    color: #fb7299; /* Bilibili pink on hover */
   }
 
   .dark a {
@@ -84,6 +99,14 @@
     color: #c8e6b7; /* slightly brighter green on hover */
   }
 
+  /* IPA colour */
+  .light .ipa {
+    color: #0366d6; /* GitHub blue or standard link blue */
+  }
+
+  .dark .ipa {
+    color: #b5cea8; /* VSCode-style light green */
+  }
 
   /* Floating Button */
   #themeToggleBtn {
@@ -141,7 +164,7 @@
 <p>以「光」字普通话拼音 guāng 为例：</p>
 <ul>
   <li>声母：g</li>
-  <li>韵母：</li>
+  <li>韵母：uang</li>
   <ul>
     <li>韵头/介音：u</li>
     <li>韵腹/主元音：a</li>
@@ -163,32 +186,526 @@
 
 <h1>声母</h1>
 
+<p>普通话和粤语声母系统大部份相同，对比如下：</p>
+
+<table>
+  <tr>
+    <td colspan="6">普通话</td>
+    <td></td>
+    <td colspan="6">粤语</td>
+  </tr>
+  <tr>
+    <td>b 帮 [p]</td>
+    <td></td>
+    <td>p 滂 [pʰ]</td>
+    <td></td>
+    <td>f 敷 [f]</td>
+    <td>m 明 [m]</td>
+    <td></td>
+    <td>b 帮 [p]</td>
+    <td></td>
+    <td>p 滂 [pʰ]</td>
+    <td></td>
+    <td>f 敷 [f]</td>
+    <td>m 明 [m]</td>
+  </tr>
+  <tr>
+    <td>d 端 [t]</td>
+    <td></td>
+    <td>t 透 [tʰ]</td>
+    <td></td>
+    <td>l 来 [l]</td>
+    <td>n 泥 [n]</td>
+    <td></td>
+    <td>d 端 [t]</td>
+    <td></td>
+    <td>t 透 [tʰ]</td>
+    <td></td>
+    <td>l 来 [l]</td>
+    <td>n 泥 [n]</td>
+  </tr>
+  <tr>
+    <td>z 租 [ts]</td>
+    <td></td>
+    <td>c 粗 [tsʰ]</td>
+    <td></td>
+    <td>s 苏 [s]</td>
+    <td></td>
+    <td></td>
+    <td>z 租知 [ts ~ tʃ]</td>
+    <td></td>
+    <td>c 粗痴 [tsʰ ~ tʃʰ]</td>
+    <td></td>
+    <td>s 苏诗 [s ~ ʃ]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>j 见 [tɕ]</td>
+    <td></td>
+    <td>q 期 [tɕʰ]</td>
+    <td></td>
+    <td>x 溪晓 [ɕ]</td>
+    <td></td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>zh 知 [tʂ]</td>
+    <td></td>
+    <td>ch 痴 [tʂʰ]</td>
+    <td></td>
+    <td>sh 诗 [ʂ]</td>
+    <td>r 日 [ɻ ~ ʐ]</td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+    <td>/</td>
+    <td>/</td>
+  </tr>
+  <tr>
+    <td>g 哥古 [k]</td>
+    <td>(gu) [ku̯]</td>
+    <td>k 可困 [kʰ]</td>
+    <td>(ku) [kʰu̯]</td>
+    <td></td>
+    <td>/</td>
+    <td></td>
+    <td>g 见哥 [k]</td>
+    <td>gw 古 [kʷ]</td>
+    <td>k 溪期 [kʰ]</td>
+    <td>kw 困 [kʷʰ]</td>
+    <td></td>
+    <td>ng 我 [ŋ]</td>
+  </tr>
+  <tr>
+    <td>ø 安 [ʔ]</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>h 河 [x]</td>
+    <td></td>
+    <td></td>
+    <td>ø 安 [ʔ]</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>h 晓可河 [h]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>w 窝我 [w]</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>y 以 [j]</td>
+    <td></td>
+    <td></td>
+    <td>w 窝 [w]</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>j 以 [j]</td>
+  </tr>
+</table>
+
+<p>注：</p>
+<ol>
+  <li>单元格内容依次为：拼音、例字、音标。</li>
+  <li>两侧处于对应位置的声母同音或音近（由音标可见）。</li>
+  <li>gu、ku 不是独立的声母，只为与 gw、kw 对照。</li>
+  <li>ø（空集符号）表示零声母，在拼音中无符号，即不写。</li>
+</ol>
+
 <h1>韵母</h1>
 
+<p>本节先给出粤语的韵母表作为概览，然后分别对比韵头、韵腹、韵尾与普通话的异同。</p>
+
+<h2>韵母表</h2>
+
+<table>
+  <tr>
+    <td></td>
+    <td>-ø</td>
+    <td>-i</td>
+    <td>-u</td>
+    <td>-m</td>
+    <td>-n</td>
+    <td>-ng</td>
+    <td>-p</td>
+    <td>-t</td>
+    <td>-k</td>
+  </tr>
+  <tr>
+    <td>aa [aː]</td>
+    <td>妈麻</td>
+    <td>猜柴</td>
+    <td>搞咬</td>
+    <td>三站</td>
+    <td>餐残</td>
+    <td>耕盲</td>
+    <td>插圾</td>
+    <td>八捺</td>
+    <td>百白</td>
+  </tr>
+  <tr>
+    <td>a [ɐ]</td>
+    <td></td>
+    <td>妻齐</td>
+    <td>九藕</td>
+    <td>心朕</td>
+    <td>亲尘</td>
+    <td>庚盟</td>
+    <td>辑十</td>
+    <td>一七日</td>
+    <td>不拔</td>
+  </tr>
+  <tr>
+    <td>i [i]</td>
+    <td>意二</td>
+    <td></td>
+    <td>照赵</td>
+    <td>占渐</td>
+    <td>建健</td>
+    <td>敬劲</td>
+    <td>腌叶</td>
+    <td>必憋别</td>
+    <td>识食</td>
+  </tr>
+  <tr>
+    <td>yu [y]</td>
+    <td>于如</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>渊源</td>
+    <td></td>
+    <td></td>
+    <td>雪月</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>e [e ~ ɛ]</td>
+    <td>些蛇</td>
+    <td>四味</td>
+    <td>*掉</td>
+    <td>*舐</td>
+    <td></td>
+    <td>镜病</td>
+    <td>*夹</td>
+    <td></td>
+    <td>尺石</td>
+  </tr>
+  <tr>
+    <td>eo [ɵ]</td>
+    <td></td>
+    <td>水绪</td>
+    <td></td>
+    <td></td>
+    <td>进尽</td>
+    <td></td>
+    <td></td>
+    <td>出术</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>oe [œ]</td>
+    <td>靴</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>枪长</td>
+    <td></td>
+    <td>*</td>
+    <td>约若</td>
+  </tr>
+  <tr>
+    <td>o [ɔ]</td>
+    <td>梳傻</td>
+    <td>改殆</td>
+    <td>到道</td>
+    <td></td>
+    <td>汉汗</td>
+    <td>绑莽</td>
+    <td></td>
+    <td>喝褐</td>
+    <td>壳学</td>
+  </tr>
+  <tr>
+    <td>u [u]</td>
+    <td>苦妇</td>
+    <td>贝悖</td>
+    <td></td>
+    <td></td>
+    <td>半胖</td>
+    <td>俑勇</td>
+    <td></td>
+    <td>泼活</td>
+    <td>谷六</td>
+  </tr>
+  <tr>
+    <td>m [m̩]</td>
+    <td>唔</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+      <td>ng [ŋ̍]</td>
+      <td>五吴</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+  </tr>
+</table>
+
+<p>其中：</p>
+<ol>
+  <li>第一列是各韵腹的拼音和参考音值。</li>
+  <li>第一行是韵尾，-ø 表示无韵尾。</li>
+  <li>标 * 表示口语音。</li>
+  <li>拼音为 m 的常用字只有否定词「唔」（表示不、非），有些人混淆 m 和 ng，如将「五吴」的音也发成 m。</li>
+</ol>
+
+<h2>韵头/介音</h2>
+
+<p>普通话有三种介音：</p>
+<ul>
+  <li>i：家 jia</li>
+  <li>u：瓜 gua</li>
+  <li>ü：绝 jue（j 后 ü 省略两点）</li>
+</ul>
+
+<p>或许听过「四呼」：</p>
+
+<ul>
+  <li>开口呼：无介音</li>
+  <li>齐齿呼：i 介音（包括 y 开头，但非 yu 开头）</li>
+  <li>合口呼：u 介音（包括 w 开头）</li>
+  <li>撮口呼：ü 介音（yu 开头属此类）</li>
+</ul>
+
+<p>粤语的介音系统基本崩溃，只剩 g、k 两声母后还有 u 介音残留。为了方便，将它们合为 gw、kw 两个独立声母，并权当粤语没有介音。</p>
+
+<h2>韵腹/主元音</h2>
+
+<p>普通话主元音有：a, o, e, i, u, ü, ng；粤语主元音有：aa, a, e, i, o, u, yu, eo, oe, m, ng。其中 m、ng 比较特殊，是鼻辅音元音化，用作韵母，例如普通话「哼 hng」、粤语「唔 m」和「吴 ng」。</p>
+<p>下表分组对比它们在不同拼读环境下的读音异同：</p>
+<ul>
+  <li>第一列是各主元音在两套拼音中的写法。</li>
+  <li>第二、四列是该主元音拼音在各个韵母中的情况和例字.</li>
+  <li>第三列是参考音值，两侧同用音标的表明读音相同或相近。</li>
+</ul>
+
+<table>
+  <tr>
+    <td></td>
+    <td>普通话</td>
+    <td>音标</td>
+    <td>粤语</td>
+  </tr>
+  <tr>
+    <td rowspan="4">a, aa</td>
+    <td>ai 该<br>an 翻</td>
+    <td>[aː]</td>
+    <td>aa 妈, aai 街, aau 交<br>aam 监, aan 翻, aang 耕<br>aap 鸭, aat 压, aak 格</td>
+  </tr>
+  <tr>
+    <td>a 妈</td>
+    <td>[ä]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ao 交<br/>ang 刚</td>
+    <td>[ɑ]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[ɐ]</td>
+    <td>ai 鸡, au 兜<br/>am 金, an 恩, ang 庚<br/>ap 恰, at 乞 ak 黑</td>
+  </tr>
+  <tr>
+    <td rowspan="3">e</td>
+    <td>ei 黑, (ui) 灰</td>
+    <td>[e]</td>
+    <td>ei 希</td>
+  </tr>
+  <tr>
+    <td>ie 姐, ue 月<br/>(ian) 监, (üan) 冤</td>
+    <td>[ɛ]</td>
+    <td>e 姐<br/>eng 镜<br/>ek 石</td>
+  </tr>
+  <tr>
+    <td>e 哥<br/>en 恩, (un) 温, eng 风</td>
+    <td>[ɤ]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td rowspan="4">i</td>
+    <td>i 衣<br/>in 因, ing 鹰</td>
+    <td>[i]</td>
+    <td>i 衣<br/>in 烟</td>
+  </tr>
+  <tr>
+    <td>zi 资, ci 雌, si 思</td>
+    <td>[ɹ̩]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>zhi 知, chi 吃, shi 诗, ri 日</td>
+    <td>[ɻ̩]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>[ɪ]</td>
+    <td>ing 鹰<br/>ik 益</td>
+  </tr>
+  <tr>
+    <td rowspan="2">o</td>
+    <td>o 波, uo 国, ou 勾</td>
+    <td>[o̞ ~ ɔ]</td>
+    <td>o 哥, ou 高<br/>on 安, ong 刚<br/>ot 喝, ok 角</td>
+  </tr>
+  <tr>
+    <td>ong 空</td>
+    <td rowspan="2">[o ~ ʊ ~  u]</td>
+    <td rowspan="2">u 乌, ui 灰<br/>un 观, ung 空<br/>uk 屋</td>
+  </tr>
+  <tr>
+    <td>u</td>
+    <td>u 乌</td>
+  </tr>
+  <tr>
+    <td>ü, yu</td>
+    <td>ü 于<br/>üe 月<br/>ün 晕</td>
+    <td>[y]</td>
+    <td>yu 于<br/>yut 月<br/>yun 冤</td>
+  </tr>
+  <tr>
+    <td>eo</td>
+    <td></td>
+    <td>[ɵ]</td>
+    <td>eoi 虚<br/>eon 津</td>
+  </tr>
+  <tr>
+    <td>oe</td>
+    <td></td>
+    <td>[œ]</td>
+    <td>oe 靴<br/>oeng 香<br/>oek 约</td>
+  </tr>
+</table>
+
+<h2>韵尾</h2>
+
 <h1>声调</h1>
+
+<h1>工具</h1>
+
+<h2>练习：Swadesh 核心词列表</h2>
 
 <h1>参考</h1>
 
 <ol>
   <li><a href="https://jyutping.org/jyutping/" target=_blank>粵拼：香港語言學學會粵語拼音方案</a></li>
   <li><a href="https://github.com/rime/rime-cantonese" target=_blank>Rime Cantonese input schema | 粵語拼音輸入方案</a></li>
+  <li><a href="https://zh.wikipedia.org/wiki/%E6%96%AF%E7%93%A6%E8%BF%AA%E5%A3%AB%E6%A0%B8%E5%BF%83%E8%A9%9E%E5%88%97%E8%A1%A8" target=_blank>斯瓦迪士核心词列表</a></li>
 </ol>
 
 <button id="themeToggleBtn" onclick="toggleTheme()">暗 Dark</button>
 
 <script>
-  function toggleTheme() {
-    const body = document.body;
-    const btn = document.getElementById('themeToggleBtn');
-    body.classList.toggle('dark');
-    body.classList.toggle('light');
+/* button to toggle between light and dark theme
+ */
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeToggleBtn');
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
 
-    if (body.classList.contains('dark')) {
-      btn.textContent = '亮 Light';
-    } else {
-      btn.textContent = '暗 Dark';
-    }
+  if (body.classList.contains('dark')) {
+    btn.textContent = '亮 Light';
+  } else {
+    btn.textContent = '暗 Dark';
   }
+}
+
+/* dynamically wrap IPA notations with `<span class="ipa"></span>` for theme-specific colouring
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  const isIPA = (text) => {
+    // Match: [anything that contains letters, IPA symbols, etc.]
+    // Ignore: [1], [2,3], [4-5] — purely numeric or numeric with commas/hyphens
+    return /\[[^\d\[\]]*[^\d\[\],\-\s][^\[\]]*\]/.test(text);
+  };
+
+  const walk = (node) => {
+    if (node.nodeType === 3) { // Text node
+      const matches = [...node.textContent.matchAll(/\[[^\[\]]+\]/g)];
+
+      if (matches.length === 0) return;
+
+      const parent = node.parentNode;
+      const fragments = [];
+      let lastIndex = 0;
+
+      for (const match of matches) {
+        const full = match[0];
+        const index = match.index;
+
+        // Check if it's an IPA match, not a reference
+        if (!/\[[\d,\-\s]+\]/.test(full)) {
+          // Add preceding text
+          fragments.push(document.createTextNode(node.textContent.slice(lastIndex, index)));
+
+          // Create span for IPA
+          const span = document.createElement("span");
+          span.className = "ipa";
+          span.textContent = full;
+          fragments.push(span);
+
+          lastIndex = index + full.length;
+        }
+      }
+
+      // Add remaining text
+      if (lastIndex < node.textContent.length) {
+        fragments.push(document.createTextNode(node.textContent.slice(lastIndex)));
+      }
+
+      // Replace original text node
+      if (fragments.length > 0) {
+        fragments.forEach(f => parent.insertBefore(f, node));
+        parent.removeChild(node);
+      }
+    } else if (node.nodeType === 1 && node.tagName !== "SCRIPT" && node.tagName !== "STYLE") {
+      for (const child of [...node.childNodes]) {
+        walk(child);
+      }
+    }
+  };
+
+  walk(document.body);
+});
 </script>
 
 </body>
