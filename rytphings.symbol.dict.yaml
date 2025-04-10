@@ -14,6 +14,8 @@ sort: by_weight
 ¶	par
 §	sec
 ✓	check
+□	sqr
+■	sqr
 
 # dot
 …	ldots
@@ -134,11 +136,9 @@ sort: by_weight
 ⟾	rmap
 
 # logic
-⟹	implies
-⟸	impliedby
+⟹	imply
+⟸	imply
 ⟺	iff
-□	square
-■	square
 ∎	qed
 ¬	not
 ∧	and
@@ -214,7 +214,7 @@ sort: by_weight
 ⟂	perp
 
 # relationship
-∝	propto
+∝	prop
 ∞	infty
 ∼	sim
 ∽	bsim
