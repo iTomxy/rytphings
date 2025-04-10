@@ -1,62 +1,29 @@
 # rytphings
 
-基于粤拼 <sup>[1,2]</sup> 的自改粤语拼音方案。
-自制 Rime 输入方案、启用可以参考 [3,4]。
-简单粤语入门见 [introduction.html](introduction.html)（浏览器打开）。
+基于粤拼 <sup>[1,2]</sup> 的自改粤语拼音方案。自制 Rime 输入方案、启用可以参考 [3,4]。简单粤语入门见 [introduction.html](introduction.html)（浏览器打开）。
 
 # 方案简述 / The Scheme
 
-改编动机是将声调「还原」回由声母清浊、后缀派生表达的形式：
-中古四声的来源是上古后缀 <sup>[5]</sup>，
-阴阳调的来源是声母清浊。
-所以总体的设计是：
+改编动机是将声调「还原」回由声母清浊、后缀派生表达的形式：中古四声的来源是上古后缀 <sup>[5]</sup>，阴阳调的来源是声母清浊。所以总体的设计是：
 
 1. `-q` 表示以前的 *-ʔ 后缀，标上声；
 2. `-s` 表示以前的 *-s 后缀，标去声；
 3. 阳入韵尾还是 `-p/t/k`，阴入用 `-p/t/k` 和 `-b/d/g` 的屈折区分上、下阴入。
 （参考：[#1](https://github.com/iTomxy/rytphings/issues/1)、[9-11]）
 
-阴阳调总体以清、浊音辅音区分，
-加 `h` 表示送气。
-但有些例外需要特别处理：
+阴阳调总体以清、浊音辅音区分，加 `h` 表示送气。但有些例外需要特别处理：
 
-1. 晓母以前对应的浊音旧匣母在中古汉语拼音（*古韵罗马字*）<sup>[6]</sup>、切韵拼音 <sup>[7]</sup> 中都是 gh，
-但 gh 已经用来表示阳调时的溪母，
-所以参考赵元任先生的方案 <sup>[8]</sup>，
-用 x 表示阳调时的晓母。
+1. 晓母以前对应的浊音旧匣母在中古汉语拼音（*古韵罗马字*）<sup>[6]</sup>、切韵拼音 <sup>[7]</sup> 中都是 gh，但 gh 已经用来表示阳调时的溪母，所以参考赵元任先生的方案 <sup>[8]</sup>，用 x 表示阳调时的晓母。
 
-2. 明、泥、来、我四母也有阴调的辖字，
-参考 [8]，
-复用 `h` 标记阴调。
-但我母在阴调时统一实现为零声母（亞母，清喉塞音 [ʔ]），
-所以不用 ngh。
+2. 明、泥、来、我四母也有阴调的辖字，参考 [8]，复用 `h` 标记阴调。但我母在阴调时统一实现为零声母（亞母，清喉塞音 [ʔ]），所以不用 ngh。
 
-3. 为缩短符号，
-舌音不分精照，
-参考 [8]，
-精、清二母阴调时写作 c、ch，
-阳调时写作 j、jh。
+3. 为缩短符号，舌音不分精照，参考 [8]，精、清二母阴调时写作 c、ch，阳调时写作 j、jh。
 
-4. 以、云在阴调时用 i、u；
-阳调时因为 j 被舌音占了，
-故以母改用 r 标，
-~~直觉可以是 [ʒ] 音，~~
-借来记 [j]；
-云母就用 w。
-当声母是 i/u，
-韵母又是以 i/u 开头时，
-就省略声母不写，
-但注意此时**不**是零声母 /ʔ-/（即 q-）。
+4. 以、云在阴调时用 i、u；阳调时因为 j 被舌音占了，故以母改用 r 标，~~直觉可以是 [ʒ] 音，~~借来记 [j]；云母就用 w。当声母是 i/u，韵母又是以 i/u 开头时，就省略声母不写，但注意此时**不**是零声母 /ʔ-/（即 q-）。
 
-5. 也是贪短，
-[y] 写作 y 而不是 yu，
-并将 eoi 改成符合唇形的 eoy。
+5. 也是贪短，[y] 写作 y 而不是 yu，并将 eoi 改成符合唇形的 eoy。
 
-6. 对于古、困二母，
-粤拼中分别写作 gw、kw，
-在针对阴阳调屈折时，
-只改 k/g，
-不动 w。
+6. 对于古、困二母，粤拼中分别写作 gw、kw，在针对阴阳调屈折时，只改 k/g，不动 w。
 
 ## 声母 / Initials
 
@@ -97,31 +64,26 @@
 # 生成码表 / Dictionary Generation
 
 码表（*\*.dict.yaml*）基于 [2] 的文件生成。
-本仓有添加 [2] 做子模块，
-可以用
+~~本仓有添加 [2] 做子模块，可以用~~
 
 ```shell
 git submodule update --init --recursive
 git submodule update --remote
 ```
 
-将子模块的内容拉下本地，
-再用 [Python](https://www.python.org/) 运行转换代码：
+~~将子模块的内容拉下本地，再用 [Python](https://www.python.org/) 运行转换代码：~~
 
 ```shell
 python cvt-jyut6ping3-rytphings.py
 ```
 
-或者另外下载 [2]，用 `--jyut6ping3-dir` 参数指定位置：
+~~或者另外~~下载 [2]，用 `--jyut6ping3-dir` 参数指定位置：
 
 ```shell
 python cvt-jyut6ping3-rytphings.py --jyut6ping3-dir <某路径>/rime-cantonese
 ```
 
-现时默认只会转换 [2] 中 *jyut6ping3.chars.dict.yaml* 这一个文件，
-即单字的码表。
-想转换更多，
-可以用 `--dict-files` 指定：
+现时默认只会转换 [2] 中 *jyut6ping3.chars.dict.yaml* 这一个文件，即单字的码表。想转换更多，可以用 `--dict-files` 指定：
 
 ```shell
 python cvt-jyut6ping3-rytphings.py --dict-files \
@@ -134,10 +96,16 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 # 更新 / Updates
 
+## 2025.4.10
+
+增加符号，来自 [shenlebantongying/rime_latex](https://github.com/shenlebantongying/rime_latex)。涉及：
+- rytphings.dict.yaml
+- rytphings.greek.dict.yaml
+- rytphings.symbol.dict.yaml
+
 ## 2024.12.21
 
-支持困母的合口、送气标记换位，
-即：
+支持困母的合口、送气标记换位，即：
 
 - kwh = khw
 - gwh = ghw
@@ -154,8 +122,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 - i 开头
 - 其余 u 开头
 
-是音调以母、云母，
-不支持前加 `q-`。
+是音调以母、云母，不支持前加 `q-`。
 
 ## 2024.11.30
 
@@ -169,8 +136,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 ## 2024.11.26
 
-支持单独出现的（即无韵尾的） aa 写作 a，
-如：
+支持单独出现的（即无韵尾的） aa 写作 a，如：
 
 - 巴 paa > pa
 - 把 paaq > paq
@@ -182,8 +148,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 ## 2024.10.10
 
-阳入 -b/-d/-g 混同 -p/-t/-k 改由 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra 之 derive 命令实现，
-[cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 不再生成对应冗余拼写。
+阳入 -b/-d/-g 混同 -p/-t/-k 改由 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra 之 derive 命令实现，[cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 不再生成对应冗余拼写。
 
 ## 2023.9.20
 
@@ -191,10 +156,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 如「愛」：ois = qois。
 ~~修改在 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra，启用了 `derive/^([aeiou])/q$1/` 一行。~~
 
-2. 支持阳入用 -b/-d/-g 混同 -p/-t/-k，
-因为并无对立，
-解除同声母的耦合。
-由 [cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 生成对应冗余拼写。
+2. 支持阳入用 -b/-d/-g 混同 -p/-t/-k，因为并无对立，解除同声母的耦合。由 [cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 生成对应冗余拼写。
 
 ## 2023.3.29
 

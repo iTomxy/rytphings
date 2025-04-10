@@ -8,8 +8,50 @@
 # So this patch keeps minus and equal as-is to avoid this conflict.
 # You can still use the PageUp and PageDown button on your keyboard to navigate.
 
+# 2025.4.10
+# According to
+#     https://dvel.me/posts/rime-ice/#%E4%BB%A5-patch-%E7%9A%84%E6%96%B9%E5%BC%8F%E6%89%93%E8%A1%A5%E4%B8%81
+# one should copy the whole `default.yaml/key_binder/bindings` list here,
+# then modify the `minus` and `equal` entries within it.
+# Otherwise, the `key_binder/bindings` list will be overwritten to be containing only these two modified entries,
+# while others are not set.
+
 patch:
-  key_binder:
-    bindings:
-      - {accept: minus, send: minus, when: has_menu}
-      - {accept: equal, send: equal, when: has_menu}
+  # key_binder:
+  #   bindings:
+  #     - {accept: minus, send: minus, when: has_menu}
+  #     - {accept: equal, send: equal, when: has_menu}
+
+  # 2025.4.10
+  key_binder/bindings:
+      - {accept: "Control+p", send: Up, when: composing}
+      - {accept: "Control+n", send: Down, when: composing}
+      - {accept: "Control+b", send: Left, when: composing}
+      - {accept: "Control+f", send: Right, when: composing}
+      - {accept: "Control+a", send: Home, when: composing}
+      - {accept: "Control+e", send: End, when: composing}
+      - {accept: "Control+d", send: Delete, when: composing}
+      - {accept: "Control+k", send: "Shift+Delete", when: composing}
+      - {accept: "Control+h", send: BackSpace, when: composing}
+      - {accept: "Control+g", send: Escape, when: composing}
+      - {accept: "Control+bracketleft", send: Escape, when: composing}
+      - {accept: "Control+y", send: Page_Up, when: composing}
+      - {accept: "Alt+v", send: Page_Up, when: composing}
+      - {accept: "Control+v", send: Page_Down, when: composing}
+      - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
+      - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
+      - {accept: Tab, send: "Shift+Right", when: composing}
+      - {accept: minus, send: minus, when: has_menu} # Page_Up, when: has_menu}
+      - {accept: equal, send: equal, when: has_menu} # Page_Down, when: has_menu}
+      - {accept: comma, send: Page_Up, when: paging}
+      - {accept: period, send: Page_Down, when: has_menu}
+      - {accept: "Control+Shift+1", select: .next, when: always}
+      - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+      - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+      - {accept: "Control+Shift+4", toggle: simplification, when: always}
+      - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+      - {accept: "Control+Shift+exclam", select: .next, when: always}
+      - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+      - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+      - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+      - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}

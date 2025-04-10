@@ -3,34 +3,45 @@
 
 ---
 name: rytphings.greek
-version: "2024.4.13"
+version: "2025.4.10"
 sort: by_weight
 ...
 
 Α	alpha
 α	alpha
+ᵅ	alpha
 Β	beta
 β	beta
+ᵝ	beta
+ᵦ	beta
 Γ	gamma
 γ	gamma
+ᵞ	gamma
+ᵧ	gamma
 Δ	delta
 δ	delta
+ᵟ	delta
 Ε	epsilon
 ε	epsilon
 ϵ	epsilon
+ᵋ	epsilon
 Ε	eps
 ε	eps
 ϵ	eps
+ᵋ	eps
 Ζ	zeta
 ζ	zeta
 Η	eta
 η	eta
 Θ	theta
 θ	theta
+ᶿ	theta
 Ι	iota
 ι	iota
+ᶥ	iota
 Κ	kappa
 κ	kappa
+ϰ	varkappa
 Λ	lambda
 λ	lambda
 Μ	mu
@@ -43,8 +54,11 @@ sort: by_weight
 ο	omicron
 Π	pi
 π	pi
+ϖ	varpi
 Ρ	rho
 ρ	rho
+ϱ	varrho
+ᵨ	rho
 Σ	sigma
 σ	sigma
 ς	sigma
@@ -54,12 +68,14 @@ sort: by_weight
 υ	upsilon
 Φ	phi
 φ	phi
+ᶲ	phi
+ᵠ	varphi
+ᵩ	varphi
 Χ	chi
 χ	chi
+ᵡ	chi
+ᵪ	chi
 Ψ	psi
 ψ	psi
 Ω	omega
 ω	omega
-
-# math nabla (inverted delta)
-∇	nabla

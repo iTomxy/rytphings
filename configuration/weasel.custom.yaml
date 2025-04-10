@@ -1,5 +1,4 @@
 # weasel.custom.yaml
 
 patch:
-  "style/color_scheme": lost_temple
-
+  style/color_scheme: lost_temple

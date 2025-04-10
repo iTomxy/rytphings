@@ -1,0 +1,274 @@
+# rytphings.math.dict.yaml
+# 符號：LaTeX、數學
+# FROM: https://github.com/shenlebantongying/rime_latex
+
+---
+name: rytphings.symbol
+version: '2025.4.10'
+sort: by_weight
+...
+
+•	bullet
+†	dagger
+‡	ddagger
+¶	par
+§	sec
+✓	check
+
+# dot
+…	ldots
+⋮	vdots
+⋯	cdots
+⋰	adots
+⋱	ddots
+
+# arrow
+↑	uarrow
+↓	darrow
+←	larrow
+⟵	larrow
+→	rarrow
+⟶	rarrow
+↖	luarrow
+↗	ruarrow
+↘	rdarrow
+↙	ldarrow
+↕	udarrow
+↔	lrarrow
+⟷	lrarrow
+⤡	lurdarrow
+⤢	ldruarrow
+↚	nlarrow
+↛	nrarrow
+↮	nlrarrow
+
+⇈	uarrow
+⇊	darrow
+⇇	larrow
+⇉	rarrow
+⇄	lrarrow
+⇆	lrarrow
+⇅	udarrow
+⇵	udarrow
+
+↾	uarrow
+↿	uarrow
+⇂	darrow
+⇃	darrow
+↼	larrow
+↽	larrow
+⇀	rarrow
+⇁	rarrow
+⥊	lrarrow
+⥋	lrarrow
+⥎	lrarrow
+⥐	lrarrow
+⥌	udarrow
+⥍	udarrow
+⥏	udarrow
+⥑	udarrow
+
+⥣	uarrow
+⥥	darrow
+⥢	larrow
+⥤	rarrow
+⥮	udarrow
+⥯	udarrow
+⇋	lrarrow
+⇌	lrarrow
+⥦	lrarrow
+⥧	lrarrow
+⥨	lrarrow
+⥩	lrarrow
+
+↟	uarrow
+↡	darrow
+↞	larrow
+↠	rarrow
+
+↜	larrow
+↝	rarrow
+
+↢	larrow
+↣	rarrow
+
+⇤	larrow
+⇥	rarrow
+
+↥	umap
+↧	dmap
+↤	lmap
+⟻	lmap
+↦	rmap
+⟼	rmap
+
+↶	lcarrow
+↷	rcarrow
+↺	lcarrow
+↻	rcarrow
+⥀	larrow
+⥁	rarrow
+⟲	larrow
+⟳	rarrow
+
+⇑	uarrow
+⇓	darrow
+⇐	larrow
+⟸	larrow
+⇒	rarrow
+⟹	rarrow
+⇖	luarrow
+⇗	ruarrow
+⇙	ldarrow
+⇘	rdarrow
+⇕	udarrow
+⇔	lrarrow
+⟺	lrarrow
+⇍	nlarrow
+⇏	nrarrow
+⇎	nlrarrow
+
+⤆	lmap
+⟽	lmap
+⤇	rmap
+⟾	rmap
+
+# logic
+⟹	implies
+⟸	impliedby
+⟺	iff
+□	square
+■	square
+∎	qed
+¬	not
+∧	and
+∨	or
+∴	therefore
+∵	because
+⋀	wedge
+∧	wedge
+⋏	cwedge
+⋁	vee
+∨	vee
+⋎	cvee
+
+# set
+∀	forall
+∃	exists
+∄	nexists
+∅	empty
+∈	in
+∊	in
+∋	in
+∍	in
+∉	notin
+∌	notin
+⊂	subset
+⊃	supset
+⊄	nsubset
+⊅	nsupset
+⊆	subseteq
+⊇	supseteq
+⊈	nsubseteq
+⊉	nsupseteq
+⊊	subsetneq
+⊋	supsetneq
+∩	cap
+⋂	cap
+∪	cup
+⋃	cup
+
+# operator
+·	cdot
+∘	circ
+×	times
+⨉	times
+÷	div
+±	pm
+∓	mp
+√	sqrt
+∇	nabla
+‖	norm
+∂	partial
+⊕	oplus
+⊖	ominus
+⊗	otimes
+⊘	oslash
+⊙	odot
+⊜	oeq
+∫	int
+∬	iint
+∭	iiint
+∮	oint
+∯	oiint
+∰	oiiint
+∱	intc
+∲	varointc
+∳	ointcc
+
+# unit
+°	degree
+
+# geometry
+∠	angle
+⟂	perp
+
+# relationship
+∝	propto
+∞	infty
+∼	sim
+∽	bsim
+≁	nsim
+≃	simeq
+≄	nsimeq
+≅	cong
+≆	simneqq
+≇	ncong
+≈	approx
+≉	napprox
+≜	def
+≝	def
+≠	ne
+≡	equiv
+≢	nequiv
+≤	le
+≥	ge
+≪	ll
+≫	gg
+⋘	lll
+⋙	ggg
+≮	nle
+≯	ngt
+≰	nle
+≱	nge
+≺	prec
+≻	succ
+≼	preceq
+≽	succeq
+⊀	nprec
+⊁	nsucc
+
+# delimiter
+⌈⌉	ceil
+⌊⌋	floor
+⟮⟯	group
+⟦⟧	iverson
+⟬⟭	iverson
+⦃⦄	iverson
+⦅⦆	iverson
+⦇⦈	iverson
+⦉⦊	iverson
+
+# sex
+♀	female
+♂	male
+
+# pocker
+♠	spade
+♤	spade
+♥	heart
+♡	heart
+♦	diamond
+♢	diamond
+♣	club
+♧	club

@@ -4,7 +4,7 @@
 # - https://github.com/rime/home/wiki/CustomizationGuide
 
 patch:
-  "menu/page_size": 9
+  menu/page_size: 9
 
   schema_list:
     - {schema: rytphings}
@@ -14,8 +14,6 @@ patch:
     - {schema: luna_pinyin_simp}
     - {schema: luna_pinyin_fluency}
 
-  switcher:
-    hotkeys:
-      - F4
-      #- "Control+grave" # 避免與 VS Code 呼出命令行衝突
-
+  switcher/hotkeys:
+    - F4
+    #- "Control+grave" # 避免與 VS Code 呼出命令行衝突
