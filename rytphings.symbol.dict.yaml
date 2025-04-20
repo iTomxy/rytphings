@@ -272,3 +272,24 @@ sort: by_weight
 ♢	diamond
 ♣	club
 ♧	club
+
+# 表意文字描述序列
+# Ideographic Description Sequence, IDS
+⿰	idslr		# Left Right
+⿱	idsud		# Up Down
+⿲	idslmr		# Left Middle Right
+⿳	idsumd
+⿴	idssur		# SURround
+⿵	idsds		# Down Surround
+⿶	idsus
+⿷	idsrs
+⿸	idsrds		# Right-Down Surround
+⿹	idslds
+⿺	idsrus
+⿻	idsovl		# OVerLap
+⿼	idsls
+⿽	idslus
+⿾	idsflip
+⿿	idsrot		# ROTate
+〾	idssne		# Similar but Not Equal
+㇯	idssub		# SUBtract
