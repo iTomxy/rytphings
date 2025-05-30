@@ -25,8 +25,8 @@ switches:
     states: [ 中文, 西文 ]
   - name: full_shape
     states: [ 半角, 全角 ]
-  - options: [ noop, simplification , variants_hk, trad_tw]
-    states: [ 傳統漢字, 大陆简化汉字 , 香港傳統漢字, 臺灣傳統漢字]
+  - options: [ noop, simplification, variants_hk, trad_tw]
+    states: [ 傳統, 简化, 傳統(香港), 傳統(臺灣)]
     # 修改下行，改變預設用字 [0, 1, 2, 3 --> 對應上表]
     # Edit the following line to change the default character style
     #    [0 = OpenCC Traditional Chinese; 1 = Hong Kong TC; 2 = Taiwan TC; 3 = Mainland Simplified Chinese]

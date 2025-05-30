@@ -44,7 +44,7 @@ patch:
       - {accept: minus, send: minus, when: has_menu} # Page_Up, when: has_menu}
       - {accept: equal, send: equal, when: has_menu} # Page_Down, when: has_menu}
       - {accept: comma, send: Page_Up, when: paging}
-      - {accept: period, send: Page_Down, when: has_menu}
+      - {accept: period, send: period, when: has_menu} # send: Page_Down, when: has_menu}
       - {accept: "Control+Shift+1", select: .next, when: always}
       - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
       - {accept: "Control+Shift+3", toggle: full_shape, when: always}
