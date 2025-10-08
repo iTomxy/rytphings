@@ -37,7 +37,7 @@ switches:
   - name: emoji_suggestion
     # 取消下行註釋，預設啓動 emoji
     #reset: 1
-    states: [ 冇 Emoji, 有 Emoji ]
+    states: [ 無 Emoji, 有 Emoji ]
 
 engine:
   processors:

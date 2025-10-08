@@ -4,21 +4,7 @@ import re
 import time
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--jyut6ping3-dir', type=str,
-    default="rime-cantonese")
-parser.add_argument('--dict-files', type=str, nargs='+',
-    default=[
-        "jyut6ping3.chars.dict.yaml",
-        # "jyut6ping3.words.dict.yaml",
-        # "jyut6ping3.phrase.dict.yaml",
-        # "jyut6ping3.lettered.dict.yaml",
-        # "jyut6ping3.maps.dict.yaml",
-    ]
-)
-args = parser.parse_args()
-
-
+# 聲母
 INITIALS = [
     "b", "p", "m", "f",
     "d", "t", "n", "l",
@@ -26,9 +12,20 @@ INITIALS = [
     "g", "gw", "k", "kw", "ng",
     "h", "j", "w"
 ]
+# 送氣聲母 (不含曉母 h)
 ASPIRATED_INITIALS = ['p', 't', 'c', 'k', 'kw']  # no `h`
+# 調名
+TONES_NAME = {
+    1: ["negative even", "higher negative abrupt"], # 陰平, 上陰入
+    2: "negative ascending", # 陰上
+    3: ["negative departing", "lower negative abrupt"], # 陰去, 下陰入
+    4: "positive even", # 陽平
+    5: "positive ascending", # 陽上
+    6: ["positive departing", "positive abrupt"] # 陽去, 陽入
+}
 NEGATIVE_TONES = [1, 2, 3]
 POSITIVE_TONES = [4, 5, 6]
+# 陰聲調 -> 用清聲母表示
 INITIALS_NEG2VL = { # negative tone -> voiceless initial
     'b': 'p', 'm': "mh",
     'd': 't', 'n': "nh", 'l': "lh",
@@ -36,6 +33,7 @@ INITIALS_NEG2VL = { # negative tone -> voiceless initial
     'g': 'k', "gw": "kw", "ng": '',
     'j': 'i', 'w': 'u'
 }
+# 陽聲調 -> 用濁聲母表示
 INITIALS_POS2V = { # positive tone -> voiced initial
     'p': 'b', 'f': 'v',
     't': 'd',
@@ -54,25 +52,29 @@ def split_init_fin(init_fin):
         if "ng" == init_fin:
             return '', init_fin
         return init_fin[:2], init_fin[2:]
+
     if init_fin[0] in INITIALS:
         if "m" == init_fin:
             return '', init_fin
         return init_fin[0], init_fin[1:]
+
     return '', init_fin
 
 
 def cvt_initial(init, fin, tone):
     init2 = None
     if tone in NEGATIVE_TONES:
-        init2 = INITIALS_NEG2VL[init] if init in INITIALS_NEG2VL else init
+        init2 = INITIALS_NEG2VL.get(init, init)
     else:
         assert tone in POSITIVE_TONES, str(tone)
         if '' == init and fin in ["ng", 'm']:  # avoid "ngng", "ngm"
             init2 = init
         else:
-            init2 = INITIALS_POS2V[init] if init in INITIALS_POS2V else init
+            init2 = INITIALS_POS2V.get(init, init)
+
     if init in ASPIRATED_INITIALS:
         init2 += 'h'
+
     return init2
 
 
@@ -81,19 +83,24 @@ def cvt_final(fin, tone):
     # distinguish upper & lower negative abrupt tone by ending consonant
     if 3 == tone and fin[-1] in "ptk":
         fin2 = fin2[:-1] + {'p': 'b', 't': 'd', 'k': 'g'}[fin[-1]]
+
     return fin2
 
 
 def cvt_tone(tone, fin):
+    """after `cvt_final`"""
     if fin[-1] in "ptkbd" or 'g' == fin[-1] and "ng" != fin[-2:]:  # abrupt
         if tone in [2, 5]:  # support modified ascending tone
             return 'q'
         else:
             return ''
+
     if tone in [1, 4]:  # even
         return ''
+
     if tone in [2, 5]:  # ascending
         return 'q'
+
     assert tone in [3, 6], str(tone)  # departing
     return 's'
 
@@ -121,46 +128,65 @@ def jyut6ping3_to_rytphings(j6p3_spell):
     return ret
 
 
-for dict_f in args.dict_files:
-    cvt_dict_f = '.'.join(["rytphings"] + dict_f.split('.')[1:])
-    with open(osp.join(args.jyut6ping3_dir, dict_f), "r", encoding="utf-8") as f_j6p3, \
-            open(cvt_dict_f, "w", encoding="utf-8") as f_rph:
+if "__main__" == __name__:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--jyut6ping3-dir', type=str,
+        default="rime-cantonese")
+    parser.add_argument('--dict-files', type=str, nargs='+',
+        default=[
+            "jyut6ping3.chars.dict.yaml",
+            # "jyut6ping3.words.dict.yaml",
+            # "jyut6ping3.phrase.dict.yaml",
+            # "jyut6ping3.lettered.dict.yaml",
+            # "jyut6ping3.maps.dict.yaml",
+        ]
+    )
+    args = parser.parse_args()
 
-        # heading
-        f_rph.write("# {}\n\n---\nname: {}\nversion: \"{}\"\nsort: by_weight\n...\n\n".format(
-            cvt_dict_f,
-            '.'.join(cvt_dict_f.split('.')[:2]),
-            time.strftime("%Y.%m.%d", time.localtime(time.time())),
-        ))
 
-        iter_line = iter(f_j6p3)
-        # skip heading
-        while True:
-            line = next(iter_line).strip()
-            if "..." == line:
-                break
+    for dict_f in args.dict_files:
+        cvt_dict_f = '.'.join(["rytphings"] + dict_f.split('.')[1:])
+        with open(osp.join(args.jyut6ping3_dir, dict_f), "r", encoding="utf-8") as f_j6p3, \
+                open(cvt_dict_f, "w", encoding="utf-8") as f_rph:
 
-        _pre = (-1, -1, -1)  # sampling
-        for i, line in enumerate(iter_line):
-            line = line.strip()
-            if "" == line:
-                continue
-            spell = line.split('\t')
-            # print(spell)
-            if spell[0] in SKIP:
-                print("skip:", spell)
-                continue
-            if len(spell) > 1: # defined spelling
-                for init, fin, tone in jyut6ping3_to_rytphings(spell[1]):
-                    if (init, fin, tone) != _pre:  # sampling
-                        print(spell, "->", init + fin + tone)
-                        _pre = (init, fin, tone)
-                    spell[1] = init + fin + tone
+            # heading
+            f_rph.write("# {}\n\n---\nname: {}\nversion: \"{}\"\nsort: by_weight\n...\n\n".format(
+                cvt_dict_f,
+                '.'.join(cvt_dict_f.split('.')[:2]),
+                time.strftime("%Y.%m.%d", time.localtime(time.time())),
+            ))
+
+            iter_line = iter(f_j6p3)
+            # skip heading
+            while True:
+                line = next(iter_line).strip()
+                if "..." == line:
+                    break
+
+            _pre = (-1, -1, -1)  # verbose: example conversion
+            for i, line in enumerate(iter_line):
+                line = line.strip()
+                if "" == line:
+                    continue
+
+                spell = line.split('\t') # [<character/s>, <spell/s>, <probability>]
+                # print(spell)
+                if spell[0] in SKIP:
+                    print("skip:", spell)
+                    continue
+
+                if len(spell) > 1: # defined spelling
+                    for init, fin, tone in jyut6ping3_to_rytphings(spell[1]):
+                        if (init, fin, tone) != _pre:  # sampling
+                            print(spell, "->", init + fin + tone)
+                            _pre = (init, fin, tone)
+
+                        spell[1] = init + fin + tone
+                        f_rph.write('\t'.join(spell) + '\n')
+                else: # only phrase, no specified spelling
                     f_rph.write('\t'.join(spell) + '\n')
-            else: # only phrase, no specified spelling
-                f_rph.write('\t'.join(spell) + '\n')
 
-            # if i > 100:
-            #     break # debug
+                # if i > 100:
+                #     break # debug
 
-    print("finish:", dict_f, "->", cvt_dict_f)
+        print("finish:", dict_f, "->", cvt_dict_f)
