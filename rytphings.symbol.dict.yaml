@@ -267,6 +267,7 @@ sort: by_weight
 # sex
 ♀	female
 ♂	male
+⚥	bisex # hermaphrodite
 
 # pocker
 ♠	spade
@@ -298,3 +299,11 @@ sort: by_weight
 ⿿	idsrot		# ROTate
 〾	idssne		# Similar but Not Equal
 ㇯	idssub		# SUBtract
+
+# music
+♩	note
+♪	note
+♫	note
+♭	flat
+♮	natural
+♯	sharp
