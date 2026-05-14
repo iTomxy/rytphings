@@ -19,7 +19,7 @@
 
 3. 为缩短符号，舌音不分精照，参考 [8]，精、清二母阴调时写作 c、ch，阳调时写作 j、jh。
 
-4. 以、云在阴调时用 i、u；阳调时因为 j 被舌音占了，故以母改用 r 标，~~直觉可以是 [ʒ] 音，~~借来记 [j]；云母就用 w。当声母是 i/u，韵母又是以 i/u 开头时，就省略声母不写，但注意此时**不**是零声母 /ʔ-/（即 q-）。
+4. 以、云在阴调时用 i、u；阳调时因为 j 被舌音占了，故以母改用 r 标，借来记 [j]；云母就用 w。当声母是 i/u，韵母又是以 i/u 开头时，就省略声母不写，但注意此时**不**是零声母 /ʔ-/（即 q-）。
 
 5. 也是贪短，[y] 写作 y 而不是 yu，并将 eoi 改成符合唇形的 eoy。
 
@@ -44,9 +44,9 @@
 | a | | 矮 | | 嘔 | 庵 | 分 | 亨 | 恰/ | 乞/ | 黑/ |
 | i | 衣 | | | 邀 | 淹 | 煙 | 英 | 鎳/妾 | 必/憋 | 益/ |
 | y | 于 | | | | | 淵 | | | 粵/雪 |
-| e | 些 | 希 | | *掉 | *舐 | | 病 | *夾 | | 石/尺 |
-| eo | | | 虛 | | | 臻 | | | 卒 |
-| oe | 靴 | | | | | | 香 | | * | 藥/葯 |
+| e | 些 | 希 | | *掉 | *舐 | | 病 | /*夾 | | 石/尺 |
+| eo | | | 虛 | | | 臻 | | | 卒/ |
+| oe | 靴 | | | | | | 香 | | */ | 藥/葯 |
 | o | 哦 | 哀 | | 奧 | | 安 | 康 | | 褐/喝 | 學/惡 |
 | u | 污 | 煨 | | | | 碗 | 空 | | 活/潑 | 屋/捉 |
 | m | 唔 |
@@ -64,20 +64,17 @@
 # 生成码表 / Dictionary Generation
 
 码表（*\*.dict.yaml*）基于 [2] 的文件生成。
-~~本仓有添加 [2] 做子模块，可以用~~
 
 ```shell
 git submodule update --init --recursive
 git submodule update --remote
 ```
 
-~~将子模块的内容拉下本地，再用 [Python](https://www.python.org/) 运行转换代码：~~
-
 ```shell
 python cvt-jyut6ping3-rytphings.py
 ```
 
-~~或者另外~~下载 [2]，用 `--jyut6ping3-dir` 参数指定位置：
+下载 [2]，用 `--jyut6ping3-dir` 参数指定位置：
 
 ```shell
 python cvt-jyut6ping3-rytphings.py --jyut6ping3-dir <某路径>/rime-cantonese
@@ -154,7 +151,7 @@ python cvt-jyut6ping3-rytphings.py --dict-files \
 
 1. 零声母支持显式加 `q`，
 如「愛」：ois = qois。
-~~修改在 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra，启用了 `derive/^([aeiou])/q$1/` 一行。~~
+修改在 [rytphings.schema.yaml](rytphings.schema.yaml)/speller/algebra。
 
 2. 支持阳入用 -b/-d/-g 混同 -p/-t/-k，因为并无对立，解除同声母的耦合。由 [cvt-jyut6ping3-rytphings.py](./cvt-jyut6ping3-rytphings.py) 生成对应冗余拼写。
 
