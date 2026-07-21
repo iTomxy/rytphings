@@ -1,0 +1,136 @@
+# rytphings18.schema.yaml
+# ============================================================================
+# 18-key reduced-layout variant of rytphings (iOS Hamster / 仓). Cantonese-only.
+# ============================================================================
+# Separate schema that SHARES the rytphings dictionary (translator dictionary:
+# rytphings) and its userdb, so it does NOT disturb your normal 26-key rytphings.
+# Differences from rytphings.schema.yaml:
+#   * 8 destructive xform folds appended to speller/algebra (>>> 18-KEY FOLD <<<)
+#   * ALL reverse lookup removed (pinyin ` and stroke) — on iPhone Hamster the
+#     reverse-lookup filter does not show the rytphings spelling, so it was
+#     useless there. This is a lean pure-Cantonese schema.
+#
+# Fold quality (real tables + derives + your userdb frequency):
+#   list-clean 96.76%   top-slot 99.63%   (from finalize.py --keys 18)
+#
+# Key -> emitted representative letter (what each keyboard key sends to RIME):
+#   QZ->q  EP->e  UL->u  OX->o  AF->a  GV->g  HB->h  CY->c
+#   solo (unchanged): w r t i s d j k n m
+#
+# Deploy: put this file + the rytphings.*.dict.yaml next to it in Rime/, redeploy,
+# select schema "rytphings 18k", pair the 18-key keyboard (hamster_keyboards.yaml).
+
+schema:
+  schema_id: rytphings18
+  name: "rytphings 18k"
+  version: "2026.07.21"
+  author:
+    - iTom <hackeritom@163.com>
+  description: |-
+    自用改編版粵拼 — 18 鍵合併佈局
+    共用 rytphings 詞典，僅在 speller/algebra 末尾加入 8 條合併 xform。
+    純粵拼輸入，不含反查。
+
+switches:
+  - name: ascii_mode
+    # reset: 1
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: ascii_punct        # 標點：中文 。， / 英文 ．，（預設中文，同 jyut6ping3）
+    states: [ 。，, ．， ]
+  - options: [ simplification, noop ] #, variants_hk, trad_tw]
+    states: [ 简化, 傳統 ] #, 傳統(香港), 傳統(臺灣)]
+  - name: emoji_suggestion
+    states: [ 無 Emoji, 有 Emoji ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier@variants_hk
+    - simplifier@trad_tw
+    - simplifier
+    - simplifier@emoji_suggestion
+    - uniquifier
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - derive/^([aeo])/q$1/          # 增加 q 表示喉塞: aeo
+    - derive/^u(k|ng)/qu$1/         # 增加 q 表示喉塞: uk, ung
+    - derive/(o|u)i(q|s|$)/$1y$2/   # 支援 oi/ui -> oy/uy
+
+    # 陽入韻尾不分 -p/t/k 與 -b/d/g
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)p$/$1$2b/
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)t$/$1$2d/
+    - derive/^(b|v|d|g|x|ng|j|z|r|w)(.+)k$/$1$2g/
+    - derive/^([mnl])(?!h)(.+)p$/$1$2b/
+    - derive/^([mnl])(?!h)(.+)t$/$1$2d/
+    - derive/^([mnl])(?!h)(.+)k$/$1$2g/
+
+    # 支援無韻尾之 aa 寫作 a
+    - derive/aa(q|s|$)/a$1/
+
+    # 支援困母合口、送氣標記換位
+    - derive/^(k|g)wh/$1hw/
+
+    - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
+
+    # ======================= >>> 18-KEY FOLD <<< =======================
+    # DESTRUCTIVE — must stay LAST. Folds 26 letters onto 18 keys.
+    # QZ->q EP->e UL->u OX->o AF->a GV->g HB->h CY->c ; w r t i s d j k n m solo
+    - xform/z/q/
+    - xform/p/e/
+    - xform/l/u/
+    - xform/x/o/
+    - xform/f/a/
+    - xform/v/g/
+    - xform/b/h/
+    - xform/y/c/
+    # ===================================================================
+
+translator:
+  dictionary: rytphings
+  spelling_hints: 8
+
+variants_hk:
+  option_name: variants_hk
+  opencc_config: t2hkf.json
+
+trad_tw:
+  option_name: trad_tw
+  opencc_config: t2tw.json
+
+emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: all
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    punct: "^/([0-9]0?|[a-z]+)$"

@@ -1,0 +1,122 @@
+# hamster_keyboards.yaml
+# ============================================================================
+# 18-key layout for rytphings (Hamster / 仓 iOS). UNCONSTRAINED best combination.
+# ============================================================================
+# Pair with schema "rytphings18" (rytphings18.schema.yaml), whose algebra folds
+# the 26-letter alphabet onto these 18 keys. Each character key emits its
+# REPRESENTATIVE letter (the char sent to RIME); the label shows the merged set.
+#
+# The COMBINATION (which letters merge) is the collision-optimal 18-key fold
+# (list-clean 96.76%, top-slot 99.63%; finalize.py --keys 18). Collision depends
+# ONLY on the combination, NOT on where the keys sit — so this physical layout is
+# a free ergonomic/familiarity choice. Chosen: keep rows 1-2 exactly on the QWERTY
+# home rows and relocate only the one overflow key (o) to row 3, so every row is
+# <= 7 keys and none is sparse.
+#
+#   row1:  QZ->q  W  EP->e  R  T  UL->u  i          (q w e r t u i)
+#   row2:  AF->a  S  D  GV->g  HB->h  J  K          (a s d g h j k)
+#   row3:  OX->o  CY->c  N  M                       (o c n m)
+#
+# Do NOT expose the secondary letters via swipe: the algebra fold is destructive,
+# so literal secondary input (e.g. z, p, x) would not match the dictionary.
+#
+# Function keys:  英 (row3) -> keyboardType: alphabetic — switch to the built-in
+# English QWERTY (types English directly, bypasses RIME; it has its own ⇧ shift
+# for capitals and a 中 key to return here). Swipe-up on 英 = ' delimiter.
+# #+= (row4) -> classifySymbolic (symbols).  ↵ (row3) -> #换行 (newline, separate
+# from ✉ send).  Trad/simp 繁简 key removed per request.
+
+keyboards:
+  - name: rytphings18
+    isPrimary: true
+    rows:
+      # row 1 (7): qz w ep r t ul i
+      - keys:
+          - action: { character: { char: q } }
+            label: "QZ"
+          - action: { character: { char: w } }
+            label: "W"
+          - action: { character: { char: e } }
+            label: "EP"
+          - action: { character: { char: r } }
+            label: "R"
+          - action: { character: { char: t } }
+            label: "T"
+          - action: { character: { char: u } }
+            label: "UL"
+          - action: { character: { char: i } }
+            label: "i"
+      # row 2 (7): af s d gv hb j k
+      - keys:
+          - action: { character: { char: a } }
+            label: "AF"
+          - action: { character: { char: s } }
+            label: "S"
+          - action: { character: { char: d } }
+            label: "D"
+          - action: { character: { char: g } }
+            label: "GV"
+          - action: { character: { char: h } }
+            label: "HB"
+          - action: { character: { char: j } }
+            label: "J"
+          - action: { character: { char: k } }
+            label: "K"
+      # row 3: [英] ox cy n m [↵] [backspace]   (ox/cy/n/m stretch to fill)
+      - keys:
+          # 英: switch to Hamster's built-in English QWERTY (types English direct,
+          # has its own ⇧ shift + 中 key to return here). Swipe-up = ' delimiter.
+          - action: { keyboardType: alphabetic }
+            width: { percentage: 0.12 }
+            label: "En"
+            swipe:
+              - direction: up
+                action: { character: { char: "'" } }
+                label: "'"
+                processByRIME: true
+          - action: { character: { char: o } }
+            width: available
+            label: "XO"
+          - action: { character: { char: c } }
+            width: available
+            label: "CY"
+          - action: { character: { char: n } }
+            width: available
+            label: "N"
+          - action: { character: { char: m } }
+            width: available
+            label: "M"
+          - action: { shortcutCommand: "#换行" }
+            width: { percentage: 0.13 }
+            label: "↵"
+          - action: backspace
+            width: { percentage: 0.15 }
+            swipe:
+              - direction: up
+                action: { shortcutCommand: "#重输" }
+      # row 4: [123] [#+=] space [，] [✉]
+      - keys:
+          - action: { keyboardType: numericNineGrid }
+            width: { percentage: 0.15 }
+            label: "123"
+          - action: { keyboardType: classifySymbolic }
+            width: { percentage: 0.15 }
+            label: "#+="
+          - action: space
+            width: available
+            label: { loadingText: "rytphings18", text: "空格" }
+          # 標點: tap 逗號, 上滑 句號, 左滑 隔音符 '
+          # processByRIME: true routes the swipe char through RIME so the
+          # punctuator converts .->。 (mode-aware) and ' acts as the delimiter;
+          # without it a swipe commits the raw char straight to the app.
+          - action: { character: { char: "," } }
+            width: { percentage: 0.13 }
+            label: "，"
+            swipe:
+              - direction: up
+                action: { character: { char: "." } }
+                label: "。"
+                processByRIME: true
+          - action: enter
+            width: { percentage: 0.16 }
+            label: "✉"

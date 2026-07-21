@@ -5,3 +5,9 @@ __pycache__/
 
 # generated files
 rytphings.chars.dict.yaml
+
+# merge-keys analysis intermediates (regenerable)
+merge-keys/*.json
+merge-keys/spellmap.*
+merge-keys/freq.*
+merge-keys/layout*.txt

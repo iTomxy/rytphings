@@ -11,12 +11,12 @@ schema:
   description: |-
     自用改編版粵拼
     改自 jyut6ping3
-    見：rime/rime-cantonese
+    見: rime/rime-cantonese
 
   dependencies:
     - luna_pinyin
     # - loengfan
-    # - stroke
+    - stroke
     # - cangjie5
 
 switches:
@@ -64,7 +64,7 @@ engine:
     - script_translator
     - script_translator@luna_pinyin
     # - script_translator@loengfan
-    # - table_translator@stroke
+    - table_translator@stroke
     # - table_translator@cangjie5
   filters:
     - simplifier@variants_hk
@@ -94,16 +94,10 @@ speller:
     # - derive/^([aeiou])/q$1/      # 增加 q 表示喉塞
     - derive/^([aeo])/q$1/          # 增加 q 表示喉塞: aeo
     - derive/^u(k|ng)/qu$1/         # 增加 q 表示喉塞: uk, ung
-    # - derive/^jy?([aeiou])/y$1/   # 容錯 je -> ye, jyu -> yu
-    # - derive/^jyu/ju/             # 容錯 jyu -> ju
-    # - derive/yu/y/                # 容錯 jyu -> jy
-    # - erase/y(ng|k)/              # y + ng/k 視作簡拼而非 jung/juk
     # - derive/(g|k)u(?!ng|k)/$1wu/ # 輔音圓唇
-    # - derive/eoi(?=\d)/eoy/       # 容錯
     # - derive/eo/oe/               # 容錯 eo/oe 不分
     # - derive/oe/eo/               # 容錯 eo/oe 不分
-    # - derive/aa(?=\d)/a/          # 容錯
-    # - derive/^([a-z]+)[qs]$/$1/   # 忽略聲調
+    - derive/(o|u)i(q|s|$)/$1y$2/   # 支援 oi/ui -> oy/uy
 
     # 陽入韻尾不分 -p/t/k 與 -b/d/g
     ## 塞(擦)音, 近音, ng (因爲無 ngh)
@@ -115,10 +109,6 @@ speller:
     - derive/^([mnl])(?!h)(.+)t$/$1$2d/
     - derive/^([mnl])(?!h)(.+)k$/$1$2g/
 
-    # 支援 oi/ui -> oy/uy
-    - derive/oi(q|s|$)/oy$1/ # oi -> oy
-    - derive/ui(q|s|$)/uy$1/ # ui -> uy
-
     # 支援無韻尾之 aa 寫作 a，如 「巴 paa > pa」、「把 paaq > paq」
     - derive/aa(q|s|$)/a$1/
 
@@ -127,23 +117,9 @@ speller:
 
     - abbrev/^([a-z]).+$/$1/        # 首字母簡拼
 
-    # - xform/1/v/                  # 陰平
-    # - xform/4/vv/                 # 陽平
-    # - xform/2/x/                  # 陰上
-    # - xform/5/xx/                 # 陽上
-    # - xform/3/q/                  # 陰去
-    # - xform/6/qq/                 # 陽去
-
 translator:
   dictionary: rytphings
   spelling_hints: 8  # 將呢度改作 0，可以去除候選字後邊嘅粵拼提示
-  # preedit_format:
-  #   - xform/([aeiouymngptk])vv/${1}4/
-  #   - xform/([aeiouymngptk])xx/${1}5/
-  #   - xform/([aeiouymngptk])qq/${1}6/
-  #   - xform/([aeiouymngptk])v/${1}1/
-  #   - xform/([aeiouymngptk])x/${1}2/
-  #   - xform/([aeiouymngptk])q/${1}3/
 
 luna_pinyin:
   tag: luna_pinyin
@@ -163,14 +139,14 @@ luna_pinyin:
 #   suffix: ";"
 #   tips: 〔粵語兩分〕
 
-# stroke:
-#   tag: stroke
-#   dictionary: stroke
-#   prefix: "x"
-#   suffix: ";"
-#   tips: 〔筆畫〕
-#   preedit_format:
-#     - xlit/hspnz/一丨丿丶乙/
+stroke:
+  tag: stroke
+  dictionary: stroke
+  prefix: "~"
+  suffix: ";"
+  tips: 〔筆畫〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
 
 # cangjie5:
 #   tag: cangjie5
@@ -189,7 +165,7 @@ luna_pinyin:
 #     - "^yyy.*$"
 
 rytphings_reverse_lookup:
-  tags: [ luna_pinyin ] #, loengfan, stroke, cangjie5 ]
+  tags: [ luna_pinyin, stroke ] #, loengfan, cangjie5 ]
   overwrite_comment: false
   dictionary: rytphings
 
@@ -219,5 +195,5 @@ recognizer:
     punct: "^/([0-9]0?|[a-z]+)$"
     luna_pinyin: "^`[a-z']*;?$"
     # loengfan: "^r[a-z']*;?$"
-    # stroke: "^x[hspnz]*;?$"
+    stroke: "^~[hspnz]*;?$"
     # cangjie5: "^v[a-z]*;?$"
